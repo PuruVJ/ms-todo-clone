@@ -9,7 +9,7 @@ export class AppSidenav {
   render() {
     return (
       <aside>
-        <h2>Todo App</h2>
+        <h2>Todo App</h2> 
         <div></div>
       </aside>
     );

@@ -1,0 +1,15 @@
+{
+  "name": "ms-todo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Stencil App Starter",
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve --no-open"
+  },
+  "devDependencies": {
+    "@stencil/core": "^2.0.0-5",
+    "@stencil/router": "^1.0.1"
+  },
+  "license": "MIT"
+}

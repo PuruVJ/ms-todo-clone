@@ -9,7 +9,12 @@
   },
   "devDependencies": {
     "@stencil/core": "^2.0.0-5",
-    "@stencil/router": "^1.0.1"
+    "@stencil/router": "^1.0.1",
+    "@stencil/sass": "^1.3.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@stencil/store": "^1.3.0",
+    "idb-keyval": "^3.2.0"
+  }
 }

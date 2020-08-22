@@ -1,0 +1,25 @@
+:host {
+  display: block;
+
+  height: 100%;
+  width: max-content;
+
+  position: fixed;
+  top: 0;
+}
+
+aside {
+  display: block;
+
+  width: 20rem;
+  height: 100%;
+
+  background-color: rgba(var(--app-color-dark-rgb), 0.8);
+  backdrop-filter: blur(20px);
+
+  color: var(--app-color-dark-contrast);
+
+  padding: 0 1rem;
+
+  border: solid 1px rgba(var(--app-color-light-rgb), 0.1);
+}

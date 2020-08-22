@@ -5,14 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
 export namespace Components {
     interface AppHome {
     }
-    interface AppProfile {
-        "match": MatchResults;
-    }
     interface AppRoot {
+    }
+    interface AppSidenav {
     }
 }
 declare global {
@@ -22,36 +20,35 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
-    }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLAppSidenavElement extends Components.AppSidenav, HTMLStencilElement {
+    }
+    var HTMLAppSidenavElement: {
+        prototype: HTMLAppSidenavElement;
+        new (): HTMLAppSidenavElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "app-sidenav": HTMLAppSidenavElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
     }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
     interface AppRoot {
+    }
+    interface AppSidenav {
     }
     interface IntrinsicElements {
         "app-home": AppHome;
-        "app-profile": AppProfile;
         "app-root": AppRoot;
+        "app-sidenav": AppSidenav;
     }
 }
 export { LocalJSX as JSX };
@@ -59,8 +56,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-sidenav": LocalJSX.AppSidenav & JSXBase.HTMLAttributes<HTMLAppSidenavElement>;
         }
     }
 }

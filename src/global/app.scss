@@ -1,0 +1,60 @@
+$base-size: 1rem;
+
+@import './theme.scss';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  overflow: hidden;
+
+  transition: all 150ms ease-in;
+
+  position: relative;
+
+  background-color: var(--app-color-dark);
+}
+
+body:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 1;
+  background-image: url(../assets/wallpapers/1-o.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  transition: inherit;
+}
+
+* {
+  transition: background 150ms ease-in, background-color 150ms ease-in;
+}
+
+h1,
+h2 {
+  margin: 0;
+  line-height: 1.618;
+  font-family: 'Fira Code', monospace;
+}
+
+h1 {
+  font-size: $base-size * 2.618;
+}
+
+h2 {
+  font-size: $base-size * 1.618;
+}

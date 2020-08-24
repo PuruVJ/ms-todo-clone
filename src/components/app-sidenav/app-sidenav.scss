@@ -19,7 +19,39 @@ aside {
 
   color: var(--app-color-dark-contrast);
 
-  padding: 0 1rem;
-
   border: solid 1px rgba(var(--app-color-light-rgb), 0.1);
+}
+
+.lists {
+  list-style: none;
+
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+
+    padding: 0.5rem 1rem;
+
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: inset 0 0 0 2px var(--app-color-light);
+    }
+
+    &:hover {
+      background-color: rgba(var(--app-color-light-rgb), 0.1) !important;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      
+      padding-right: 1rem;
+
+      svg {
+
+      }
+    }
+  }
 }

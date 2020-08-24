@@ -31,7 +31,7 @@ aside {
     display: flex;
     align-items: center;
 
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
 
     cursor: pointer;
 
@@ -43,15 +43,16 @@ aside {
       background-color: rgba(var(--app-color-light-rgb), 0.1) !important;
     }
 
+    &.bordered {
+      border-bottom: solid 0.5px rgba(var(--app-color-light-rgb), 0.3);
+    }
+
     .icon {
       display: flex;
       align-items: center;
       
       padding-right: 1rem;
 
-      svg {
-
-      }
     }
   }
 }

@@ -1,11 +1,12 @@
+import {
+  mdiCalendarMonthOutline,
+  mdiDragHorizontalVariant,
+  mdiFormatListBulleted,
+  mdiStarOutline,
+  mdiWhiteBalanceSunny,
+} from '@mdi/js';
 import { createStore } from '@stencil/store';
 import { IList } from '../interfaces/list.interface';
-import {
-  mdiWhiteBalanceSunny,
-  mdiStarOutline,
-  mdiCalendarMonthOutline,
-  mdiCheckboxBlankCircleOutline,
-} from '@mdi/js';
 
 interface IListsStore {
   lists: IList[];
@@ -45,12 +46,22 @@ const defaultLists: IList[] = [
   },
   {
     id: 'all-tasks',
-    icon: mdiCheckboxBlankCircleOutline,
+    icon: mdiFormatListBulleted,
     title: 'All Tasks',
     type: 'preset',
     theme: {
       type: 'color',
-      color: '#F2F4F3',
+      color: '#74C7FB',
+    },
+  },
+  {
+    id: 'todo-app',
+    icon: mdiDragHorizontalVariant,
+    title: 'Todo App',
+    type: 'custom',
+    theme: {
+      type: 'color',
+      color: '#f4f5f8',
     },
   },
 ];

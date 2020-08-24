@@ -47,13 +47,13 @@ export class AppSidenav {
               onKeyDown={e => this.handleKeyboard(e)}
               tabIndex={i === this.selectedListIndex ? 0 : -1}
               id={`${type}-lists`}
+              class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
             >
               <span class="icon">
                 <AppIcon fill={theme.color} path={icon} />
               </span>
               <span class="title">{title}</span>
             </li>,
-            type !== arr[i + 1]?.type && <hr />,
           ])}
         </ul>
       </aside>

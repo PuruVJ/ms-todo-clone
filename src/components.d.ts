@@ -5,21 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { MatchResults, RouterHistory } from "@stencil/router";
 export namespace Components {
-    interface AppHome {
-    }
     interface AppRoot {
     }
     interface AppSidenav {
     }
+    interface AppTaskViewPane {
+    }
+    interface ListView {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
+    interface NewTaskInput {
+    }
 }
 declare global {
-    interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
-    }
-    var HTMLAppHomeElement: {
-        prototype: HTMLAppHomeElement;
-        new (): HTMLAppHomeElement;
-    };
     interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
     }
     var HTMLAppRootElement: {
@@ -32,32 +33,62 @@ declare global {
         prototype: HTMLAppSidenavElement;
         new (): HTMLAppSidenavElement;
     };
+    interface HTMLAppTaskViewPaneElement extends Components.AppTaskViewPane, HTMLStencilElement {
+    }
+    var HTMLAppTaskViewPaneElement: {
+        prototype: HTMLAppTaskViewPaneElement;
+        new (): HTMLAppTaskViewPaneElement;
+    };
+    interface HTMLListViewElement extends Components.ListView, HTMLStencilElement {
+    }
+    var HTMLListViewElement: {
+        prototype: HTMLListViewElement;
+        new (): HTMLListViewElement;
+    };
+    interface HTMLNewTaskInputElement extends Components.NewTaskInput, HTMLStencilElement {
+    }
+    var HTMLNewTaskInputElement: {
+        prototype: HTMLNewTaskInputElement;
+        new (): HTMLNewTaskInputElement;
+    };
     interface HTMLElementTagNameMap {
-        "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
         "app-sidenav": HTMLAppSidenavElement;
+        "app-task-view-pane": HTMLAppTaskViewPaneElement;
+        "list-view": HTMLListViewElement;
+        "new-task-input": HTMLNewTaskInputElement;
     }
 }
 declare namespace LocalJSX {
-    interface AppHome {
-    }
     interface AppRoot {
     }
     interface AppSidenav {
     }
+    interface AppTaskViewPane {
+    }
+    interface ListView {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+    }
+    interface NewTaskInput {
+    }
     interface IntrinsicElements {
-        "app-home": AppHome;
         "app-root": AppRoot;
         "app-sidenav": AppSidenav;
+        "app-task-view-pane": AppTaskViewPane;
+        "list-view": ListView;
+        "new-task-input": NewTaskInput;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-sidenav": LocalJSX.AppSidenav & JSXBase.HTMLAttributes<HTMLAppSidenavElement>;
+            "app-task-view-pane": LocalJSX.AppTaskViewPane & JSXBase.HTMLAttributes<HTMLAppTaskViewPaneElement>;
+            "list-view": LocalJSX.ListView & JSXBase.HTMLAttributes<HTMLListViewElement>;
+            "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
         }
     }
 }

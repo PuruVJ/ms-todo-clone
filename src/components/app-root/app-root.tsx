@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, h } from '@stencil/core';
 import { get, set } from 'idb-keyval';
+import { IIndex } from '../../interfaces/index.interface';
 import { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/list.store';
 
@@ -23,26 +24,49 @@ export class AppRoot implements ComponentInterface {
         <main>
           <stencil-router>
             <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="app-home" exact={true} />
+              <stencil-route url="/" component="list-view" exact={true} />
+              <stencil-route url="/:id" component="list-view" />
             </stencil-route-switch>
           </stencil-router>
+          <new-task-input />
         </main>
+        <app-task-view-pane />
       </div>
     );
   }
 }
 
 async function ensureLocalData() {
-  // Get the list values
-  let lists = await get<IList[]>('lists');
+  // Get the index
+  let index = await get<IIndex>('index');
 
-  if (!lists || lists.length === 0) {
-    // No data. Fresh stuff
-    // Create local data
-    await set('lists', listStore.lists);
+  if (index) {
+    const lists: IList[] = [];
 
-    lists = listStore.lists;
+    for (let listID of index.listIDs) {
+      lists.push(await get(`list:${listID}`));
+    }
+
+    listStore.lists = lists;
+
+    return;
   }
 
-  listStore.lists = lists;
+  // Index doesn't exists
+  // Meaning no local data
+
+  const listIDs = listStore.lists.map(({ id }) => id);
+
+  await set('index', {
+    listIDs,
+    taskIDs: [],
+  });
+
+  // This means no local lists are there either
+  for (let listID of listIDs) {
+    await set(
+      `list:${listID}`,
+      listStore.lists.find(({ id }) => id === listID),
+    );
+  }
 }

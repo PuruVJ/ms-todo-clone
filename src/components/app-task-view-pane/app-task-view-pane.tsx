@@ -1,12 +1,11 @@
 import { Component, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'app-home',
-  styleUrl: 'app-home.scss',
+  tag: 'app-task-view-pane',
+  styleUrl: 'app-task-view-pane.scss',
   scoped: true,
 })
-export class AppHome {
-
+export class AppTaskViewPane {
   render() {
     return (
       <Host>
@@ -14,5 +13,4 @@ export class AppHome {
       </Host>
     );
   }
-
 }

@@ -15,7 +15,7 @@ export class AppSidenav {
 
     if (e.key === 'ArrowUp') {
       this.selectedListIndex = Math.min(
-        listStore.lists.length,
+        listStore.lists.length - 1,
         Math.max(0, this.selectedListIndex - 1),
       );
 
@@ -24,7 +24,7 @@ export class AppSidenav {
 
     if (e.key === 'ArrowDown') {
       this.selectedListIndex = Math.min(
-        listStore.lists.length,
+        listStore.lists.length - 1,
         Math.max(0, this.selectedListIndex + 1),
       );
 

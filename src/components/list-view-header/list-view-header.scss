@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+#heading h1 {
+  color: var(--app-color-light);
+
+  border-radius: 8px;
+
+  padding: 0 1rem;
+
+  width: max-content;
+
+  backdrop-filter: blur(20px);
+
+  background-color: rgba(var(--app-color-dark-rgb), 0.4);
+}

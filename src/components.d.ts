@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
+import { IList } from "./interfaces/list.interface";
 export namespace Components {
     interface AppRoot {
     }
@@ -16,6 +17,9 @@ export namespace Components {
     interface ListView {
         "history": RouterHistory;
         "match": MatchResults;
+    }
+    interface ListViewHeader {
+        "listData": IList;
     }
     interface NewTaskInput {
     }
@@ -45,6 +49,12 @@ declare global {
         prototype: HTMLListViewElement;
         new (): HTMLListViewElement;
     };
+    interface HTMLListViewHeaderElement extends Components.ListViewHeader, HTMLStencilElement {
+    }
+    var HTMLListViewHeaderElement: {
+        prototype: HTMLListViewHeaderElement;
+        new (): HTMLListViewHeaderElement;
+    };
     interface HTMLNewTaskInputElement extends Components.NewTaskInput, HTMLStencilElement {
     }
     var HTMLNewTaskInputElement: {
@@ -56,6 +66,7 @@ declare global {
         "app-sidenav": HTMLAppSidenavElement;
         "app-task-view-pane": HTMLAppTaskViewPaneElement;
         "list-view": HTMLListViewElement;
+        "list-view-header": HTMLListViewHeaderElement;
         "new-task-input": HTMLNewTaskInputElement;
     }
 }
@@ -70,6 +81,9 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
+    interface ListViewHeader {
+        "listData": IList;
+    }
     interface NewTaskInput {
     }
     interface IntrinsicElements {
@@ -77,6 +91,7 @@ declare namespace LocalJSX {
         "app-sidenav": AppSidenav;
         "app-task-view-pane": AppTaskViewPane;
         "list-view": ListView;
+        "list-view-header": ListViewHeader;
         "new-task-input": NewTaskInput;
     }
 }
@@ -88,6 +103,7 @@ declare module "@stencil/core" {
             "app-sidenav": LocalJSX.AppSidenav & JSXBase.HTMLAttributes<HTMLAppSidenavElement>;
             "app-task-view-pane": LocalJSX.AppTaskViewPane & JSXBase.HTMLAttributes<HTMLAppTaskViewPaneElement>;
             "list-view": LocalJSX.ListView & JSXBase.HTMLAttributes<HTMLListViewElement>;
+            "list-view-header": LocalJSX.ListViewHeader & JSXBase.HTMLAttributes<HTMLListViewHeaderElement>;
             "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
         }
     }

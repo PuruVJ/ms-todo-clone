@@ -3,6 +3,8 @@
 
   height: 100%;
   width: max-content;
+
+  z-index: 1;
 }
 
 aside {
@@ -11,7 +13,7 @@ aside {
   width: 18rem;
   height: 100%;
 
-  background-color: rgba(var(--app-color-dark-rgb), 0.8);
+  background-color: rgba(var(--app-color-dark-rgb), 0.85);
   backdrop-filter: blur(20px);
 
   color: var(--app-color-dark-contrast);

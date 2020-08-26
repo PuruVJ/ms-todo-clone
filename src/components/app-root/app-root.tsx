@@ -2,7 +2,9 @@ import { Component, ComponentInterface, h } from '@stencil/core';
 import { get, set } from 'idb-keyval';
 import { IIndex } from '../../interfaces/index.interface';
 import { IList } from '../../interfaces/list.interface';
-import { listStore } from '../../stores/list.store';
+import { ITask } from '../../interfaces/task.interface';
+import { listStore } from '../../stores/lists.store';
+import { taskStore } from '../../stores/tasks.store';
 
 /**
  * Mostly arbitrary work will happen here
@@ -48,6 +50,15 @@ async function ensureLocalData() {
     }
 
     listStore.lists = lists;
+
+    // Now do the tasks
+    const tasks: ITask[] = [];
+
+    for (let taskID of index.taskIDs) {
+      tasks.push(await get(`task:${taskID}`));
+    }
+
+    taskStore.tasks = tasks;
 
     return;
   }

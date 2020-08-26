@@ -1,7 +1,9 @@
-import { Component, ComponentInterface, h, Prop } from '@stencil/core';
+import { Component, ComponentInterface, h, Prop, State } from '@stencil/core';
 import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
-import { get } from 'idb-keyval';
-import { IList } from '../../interfaces/list.interface';
+import type { IList } from '../../interfaces/list.interface';
+import type { ITask } from '../../interfaces/task.interface';
+import { listStore } from '../../stores/lists.store';
+import { taskStore } from '../../stores/tasks.store';
 
 @Component({
   tag: 'list-view',
@@ -13,31 +15,38 @@ export class ListView implements ComponentInterface {
 
   @Prop() history: RouterHistory;
 
-  componentWillLoad() {
+  @State() listData: IList;
+
+  @State() taskList: ITask[] = [];
+
+  async componentWillLoad() {
     if (this.match.url === '/') {
       // Go to my-day page
       this.history.push('/my-day');
       return;
     }
-  }
 
-  async componentDidLoad() {
     // Now load up data
-    const listData = await getList(this.match.params.id);
+    this.listData = listStore.lists.find(({ id }) => id === this.match.params.id);
 
     // Get all the tasks associated to this list
-    console.log(listData);
+    this.taskList = getTasks(this.listData.id);
   }
 
   render() {
-    return <div id="container"></div>;
+    return (
+      <div id="container">
+        <list-view-header listData={this.listData} />
+      </div>
+    );
   }
 }
 
 injectHistory(ListView);
 
-async function getList(id: string): Promise<IList> {
-  const list = await get<IList>(`list:${id}`);
-
-  return list;
-}
+const getTasks = (listID: string): ITask[] =>
+  taskStore.tasks.filter(({ listIDs }) =>
+    listIDs
+      .map(lId => listStore.lists.find(({ id }) => id === lId))
+      .some(({ id }) => id === listID),
+  );

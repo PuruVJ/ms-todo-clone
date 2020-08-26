@@ -1,5 +1,5 @@
 import { Component, h, State } from '@stencil/core';
-import { listStore } from '../../stores/list.store';
+import { listStore } from '../../stores/lists.store';
 import { AppIcon } from '../../functional-comps/app-icon';
 
 @Component({

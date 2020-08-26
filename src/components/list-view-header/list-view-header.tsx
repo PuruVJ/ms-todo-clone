@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import type { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';
 

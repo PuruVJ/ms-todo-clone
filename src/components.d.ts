@@ -11,6 +11,7 @@ export namespace Components {
     interface AppRoot {
     }
     interface AppSidenav {
+        "history": RouterHistory;
     }
     interface AppTaskViewPane {
     }
@@ -74,6 +75,7 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface AppSidenav {
+        "history"?: RouterHistory;
     }
     interface AppTaskViewPane {
     }

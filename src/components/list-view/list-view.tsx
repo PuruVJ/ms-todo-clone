@@ -1,5 +1,5 @@
-import { Component, ComponentInterface, h, Prop, State } from '@stencil/core';
-import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
+import { Component, ComponentInterface, h, Prop, State, Watch } from '@stencil/core';
+import { injectHistory, LocationSegments, MatchResults, RouterHistory } from '@stencil/router';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
@@ -19,6 +19,20 @@ export class ListView implements ComponentInterface {
 
   @State() taskList: ITask[] = [];
 
+  @Watch('match') onMatchChange() {
+    this.handleStates();
+  }
+
+  handleStates() {
+    // Now load up data
+    this.listData = listStore.lists.find(({ id }) => id === this.match.params.id);
+
+    console.log(this.match.params.id);
+
+    // Get all the tasks associated to this list
+    this.taskList = getTasks(this.listData.id);
+  }
+
   async componentWillLoad() {
     if (this.match.url === '/') {
       // Go to my-day page
@@ -26,11 +40,7 @@ export class ListView implements ComponentInterface {
       return;
     }
 
-    // Now load up data
-    this.listData = listStore.lists.find(({ id }) => id === this.match.params.id);
-
-    // Get all the tasks associated to this list
-    this.taskList = getTasks(this.listData.id);
+    this.handleStates();
   }
 
   render() {
@@ -44,9 +54,10 @@ export class ListView implements ComponentInterface {
 
 injectHistory(ListView);
 
-const getTasks = (listID: string): ITask[] =>
-  taskStore.tasks.filter(({ listIDs }) =>
+const getTasks = (listID: string): ITask[] => {
+  return taskStore.tasks.filter(({ listIDs }) =>
     listIDs
       .map(lId => listStore.lists.find(({ id }) => id === lId))
       .some(({ id }) => id === listID),
   );
+};

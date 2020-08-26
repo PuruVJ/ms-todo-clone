@@ -1,6 +1,7 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { listStore } from '../../stores/lists.store';
 import { AppIcon } from '../../functional-comps/app-icon';
+import { injectHistory, RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-sidenav',
@@ -8,7 +9,17 @@ import { AppIcon } from '../../functional-comps/app-icon';
   scoped: true,
 })
 export class AppSidenav {
+  @Prop() history: RouterHistory;
+
   @State() selectedListIndex: number = 0;
+
+  sortedLists() {
+    const presetLists = listStore.lists.filter(({ type }) => type === 'preset');
+    const customLists = listStore.lists.filter(({ type }) => type === 'custom');
+
+    const finalLists = [...presetLists, ...customLists];
+    return finalLists;
+  }
 
   handleKeyboard(e: KeyboardEvent) {
     const el = e.target as HTMLLIElement;
@@ -30,21 +41,27 @@ export class AppSidenav {
 
       (el.nextElementSibling as HTMLLIElement)?.focus();
     }
+
+    if (['Enter', ' ', 'Spacebar'].some(key => key === e.key)) {
+      this.history.push(`/${this.sortedLists()[this.selectedListIndex].id}`);
+    }
+  }
+
+  handleNavChanges(id: string) {
+    this.history.push(`/${id}`);
   }
 
   render() {
-    const presetLists = listStore.lists.filter(({ type }) => type === 'preset');
-    const customLists = listStore.lists.filter(({ type }) => type === 'custom');
-
-    const finalLists = [...presetLists, ...customLists];
-
     return (
       <aside>
         <h2>Todo App</h2>
         <ul class="lists">
-          {finalLists.map(({ icon, title, type, theme }, i, arr) => [
+          {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
             <li
               onKeyDown={e => this.handleKeyboard(e)}
+              onClick={() => {
+                this.handleNavChanges(id);
+              }}
               tabIndex={i === this.selectedListIndex ? 0 : -1}
               id={`${type}-lists`}
               class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
@@ -60,3 +77,5 @@ export class AppSidenav {
     );
   }
 }
+
+injectHistory(AppSidenav);

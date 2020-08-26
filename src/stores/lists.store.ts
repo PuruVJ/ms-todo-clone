@@ -6,7 +6,9 @@ import {
   mdiWhiteBalanceSunny,
 } from '@mdi/js';
 import { createStore } from '@stencil/store';
+import { set } from 'idb-keyval';
 import { IList } from '../interfaces/list.interface';
+import { taskStore } from './tasks.store';
 
 interface IListsStore {
   lists: IList[];
@@ -66,8 +68,25 @@ const defaultLists: IList[] = [
   },
 ];
 
-const { state } = createStore<IListsStore>({
+const { state, onChange } = createStore<IListsStore>({
   lists: [...defaultLists],
+});
+
+onChange('lists', async lists => {
+  const listIDs = lists.map(({ id }) => id);
+
+  // Re-write the new changes to indexeddb
+  await set('index', {
+    taskIDs: taskStore.tasks.map(({ id }) => id),
+    listIDs,
+  });
+
+  for (let listID of listIDs) {
+    await set(
+      `list:${listID}`,
+      lists.find(({ id }) => id === listID),
+    );
+  }
 });
 
 export { state as listStore };

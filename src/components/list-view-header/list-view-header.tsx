@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, forceUpdate, h, Prop, Watch } from '@stencil/core';
 import type { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';
 
@@ -21,16 +21,15 @@ export class ListViewHeader {
   }
 
   render() {
-    const { theme, title } = this.listData || {};
     return (
       <div id="container">
         <div id="heading">
           <h1
             onInput={(e: InputEvent) => this.renameList(e)}
             contentEditable={true}
-            style={{ color: theme.color }}
+            style={{ color: this.listData.theme.color }}
           >
-            {title}
+            {this.listData.title}
           </h1>
         </div>
       </div>

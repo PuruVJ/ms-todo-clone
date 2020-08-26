@@ -48,7 +48,8 @@ export class ListView implements ComponentInterface {
   render() {
     return (
       <div id="container">
-        <list-view-header listData={this.listData} />
+        <list-view-header key={this.listData.id} listData={this.listData} />
+        {this.listData.title}
       </div>
     );
   }

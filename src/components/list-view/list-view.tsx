@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h, Prop, State, Watch } from '@stencil/core';
-import { injectHistory, LocationSegments, MatchResults, RouterHistory } from '@stencil/router';
+import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';

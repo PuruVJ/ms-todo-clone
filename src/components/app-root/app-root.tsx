@@ -15,7 +15,7 @@ import { taskStore } from '../../stores/tasks.store';
   scoped: true,
 })
 export class AppRoot implements ComponentInterface {
-  async componentDidLoad() {
+  async componentWillLoad() {
     await ensureLocalData();
   }
 
@@ -68,9 +68,11 @@ async function ensureLocalData() {
 
   const listIDs = listStore.lists.map(({ id }) => id);
 
+  const taskIDs = taskStore.tasks.map(({ id }) => id);
+
   await set('index', {
     listIDs,
-    taskIDs: [],
+    taskIDs,
   });
 
   // This means no local lists are there either
@@ -78,6 +80,13 @@ async function ensureLocalData() {
     await set(
       `list:${listID}`,
       listStore.lists.find(({ id }) => id === listID),
+    );
+  }
+
+  for (let taskID of taskIDs) {
+    await set(
+      `task:${taskID}`,
+      taskStore.tasks.find(({ id }) => id === taskID),
     );
   }
 }

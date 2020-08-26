@@ -2,7 +2,7 @@ import { Component, ComponentInterface, h, Prop, State, Watch } from '@stencil/c
 import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
-import { listStore } from '../../stores/lists.store';
+import { listStore, onListsStoreChange } from '../../stores/lists.store';
 import { taskStore } from '../../stores/tasks.store';
 
 @Component({
@@ -41,6 +41,10 @@ export class ListView implements ComponentInterface {
     }
 
     this.handleStates();
+  }
+
+  componentDidLoad() {
+    onListsStoreChange('lists', this.handleStates);
   }
 
   render() {

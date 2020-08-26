@@ -89,4 +89,4 @@ onChange('lists', async lists => {
   }
 });
 
-export { state as listStore };
+export { state as listStore, onChange as onListsStoreChange };

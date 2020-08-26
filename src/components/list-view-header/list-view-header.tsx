@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import type { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';
 
@@ -21,7 +21,7 @@ export class ListViewHeader {
   }
 
   render() {
-    const { theme, title } = this.listData || {};
+    const { theme, title } = this.listData;
     return (
       <div id="container">
         <div id="heading">

@@ -27,8 +27,6 @@ export class ListView implements ComponentInterface {
     // Now load up data
     this.listData = listStore.lists.find(({ id }) => id === this.match.params.id);
 
-    console.log(this.match.params.id);
-
     // Get all the tasks associated to this list
     this.taskList = getTasks(this.listData.id);
   }
@@ -41,10 +39,10 @@ export class ListView implements ComponentInterface {
     }
 
     this.handleStates();
-  }
 
-  componentDidLoad() {
-    onListsStoreChange('lists', this.handleStates);
+    onListsStoreChange('lists', () => {
+      this.handleStates();
+    });
   }
 
   render() {

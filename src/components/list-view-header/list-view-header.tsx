@@ -21,7 +21,7 @@ export class ListViewHeader {
   }
 
   render() {
-    const { theme, title } = this.listData;
+    const { theme, title } = this.listData || {};
     return (
       <div id="container">
         <div id="heading">

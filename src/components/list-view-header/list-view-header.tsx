@@ -14,7 +14,7 @@ export class ListViewHeader {
     return (
       <div id="container">
         <div id="heading">
-          <h1 style={{ color: theme.color }}>{title}</h1>
+          <h1 contentEditable={this.listData.type === 'preset'} style={{ color: theme.color }}>{title}</h1>
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 $base-size: 1rem;
 
 @import './theme.scss';
+@import '~tippy.js/dist/tippy.css';
 
 html,
 body {
@@ -84,4 +85,15 @@ hr {
   border: none;
 
   background-color: rgba(var(--app-color-light-rgb), 0.3);
+}
+
+.tippy-box[data-theme='theme-selector'] {
+  .tippy-content {
+    padding: 0;
+
+    background-color: rgba(var(--app-color-dark-rgb), 0.6);
+    backdrop-filter: blur(30px);
+
+    border-radius: 8px;
+  }
 }

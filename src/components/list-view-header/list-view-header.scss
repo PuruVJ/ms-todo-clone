@@ -2,6 +2,11 @@
   display: block;
 }
 
+#container {
+  display: flex;
+  flex-direction: row;
+}
+
 #heading h1 {
   color: var(--app-color-light);
 
@@ -12,6 +17,31 @@
   width: max-content;
 
   backdrop-filter: blur(20px);
-
   background-color: rgba(var(--app-color-dark-rgb), 0.4);
+}
+
+#options-area {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding-right: 4rem;
+}
+
+#options-area button {
+  background-color: rgba(var(--app-color-dark-rgb), 0.4);
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  height: 3rem;
+  width: 3rem;
+
+  cursor: pointer;
 }

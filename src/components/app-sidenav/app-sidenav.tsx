@@ -47,10 +47,6 @@ export class AppSidenav {
     }
   }
 
-  handleNavChanges(id: string) {
-    this.history.push(`/${id}`);
-  }
-
   render() {
     return (
       <aside>
@@ -58,10 +54,9 @@ export class AppSidenav {
         <ul class="lists">
           {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
             <li
+              aria-label={`${title} list`}
               onKeyDown={e => this.handleKeyboard(e)}
-              onClick={() => {
-                this.handleNavChanges(id);
-              }}
+              onClick={() => this.history.push(`/${id}`)}
               tabIndex={i === this.selectedListIndex ? 0 : -1}
               id={`${type}-lists`}
               class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}

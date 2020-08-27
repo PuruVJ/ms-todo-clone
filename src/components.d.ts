@@ -15,6 +15,8 @@ export namespace Components {
     }
     interface AppTaskViewPane {
     }
+    interface ListOptions {
+    }
     interface ListView {
         "history": RouterHistory;
         "match": MatchResults;
@@ -23,6 +25,8 @@ export namespace Components {
         "listData": IList;
     }
     interface NewTaskInput {
+    }
+    interface ThemeSelector {
     }
 }
 declare global {
@@ -44,6 +48,12 @@ declare global {
         prototype: HTMLAppTaskViewPaneElement;
         new (): HTMLAppTaskViewPaneElement;
     };
+    interface HTMLListOptionsElement extends Components.ListOptions, HTMLStencilElement {
+    }
+    var HTMLListOptionsElement: {
+        prototype: HTMLListOptionsElement;
+        new (): HTMLListOptionsElement;
+    };
     interface HTMLListViewElement extends Components.ListView, HTMLStencilElement {
     }
     var HTMLListViewElement: {
@@ -62,13 +72,21 @@ declare global {
         prototype: HTMLNewTaskInputElement;
         new (): HTMLNewTaskInputElement;
     };
+    interface HTMLThemeSelectorElement extends Components.ThemeSelector, HTMLStencilElement {
+    }
+    var HTMLThemeSelectorElement: {
+        prototype: HTMLThemeSelectorElement;
+        new (): HTMLThemeSelectorElement;
+    };
     interface HTMLElementTagNameMap {
         "app-root": HTMLAppRootElement;
         "app-sidenav": HTMLAppSidenavElement;
         "app-task-view-pane": HTMLAppTaskViewPaneElement;
+        "list-options": HTMLListOptionsElement;
         "list-view": HTMLListViewElement;
         "list-view-header": HTMLListViewHeaderElement;
         "new-task-input": HTMLNewTaskInputElement;
+        "theme-selector": HTMLThemeSelectorElement;
     }
 }
 declare namespace LocalJSX {
@@ -79,6 +97,8 @@ declare namespace LocalJSX {
     }
     interface AppTaskViewPane {
     }
+    interface ListOptions {
+    }
     interface ListView {
         "history"?: RouterHistory;
         "match"?: MatchResults;
@@ -88,13 +108,17 @@ declare namespace LocalJSX {
     }
     interface NewTaskInput {
     }
+    interface ThemeSelector {
+    }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "app-sidenav": AppSidenav;
         "app-task-view-pane": AppTaskViewPane;
+        "list-options": ListOptions;
         "list-view": ListView;
         "list-view-header": ListViewHeader;
         "new-task-input": NewTaskInput;
+        "theme-selector": ThemeSelector;
     }
 }
 export { LocalJSX as JSX };
@@ -104,9 +128,11 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-sidenav": LocalJSX.AppSidenav & JSXBase.HTMLAttributes<HTMLAppSidenavElement>;
             "app-task-view-pane": LocalJSX.AppTaskViewPane & JSXBase.HTMLAttributes<HTMLAppTaskViewPaneElement>;
+            "list-options": LocalJSX.ListOptions & JSXBase.HTMLAttributes<HTMLListOptionsElement>;
             "list-view": LocalJSX.ListView & JSXBase.HTMLAttributes<HTMLListViewElement>;
             "list-view-header": LocalJSX.ListViewHeader & JSXBase.HTMLAttributes<HTMLListViewHeaderElement>;
             "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
+            "theme-selector": LocalJSX.ThemeSelector & JSXBase.HTMLAttributes<HTMLThemeSelectorElement>;
         }
     }
 }

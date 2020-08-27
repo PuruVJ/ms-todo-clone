@@ -1,4 +1,7 @@
+import { mdiDotsVertical } from '@mdi/js';
 import { Component, h, Prop } from '@stencil/core';
+import tippy, { sticky } from 'tippy.js';
+import { AppIcon } from '../../functional-comps/app-icon';
 import type { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';
 
@@ -10,6 +13,8 @@ import { listStore } from '../../stores/lists.store';
 export class ListViewHeader {
   @Prop() listData!: IList;
 
+  optionsButton: HTMLButtonElement;
+
   renameList(e: InputEvent) {
     const target = e.target as HTMLHeadingElement;
 
@@ -20,6 +25,24 @@ export class ListViewHeader {
     listStore.lists = [...listStore.lists];
   }
 
+  componentDidLoad() {
+    // tippy('button', { content: 'Hello', theme: 'material', arrow: false });
+    tippy('#lvh-options-button', {
+      interactive: true,
+      trigger: 'focusin click',
+      allowHTML: true,
+      content: '<list-options />',
+      hideOnClick: false,
+      arrow: false,
+      theme: 'theme-selector',
+      sticky: true,
+      placement: 'auto',
+      plugins: [sticky],
+    });
+
+    // this.optionsButton.click();
+  }
+
   render() {
     return (
       <div id="container">
@@ -27,10 +50,15 @@ export class ListViewHeader {
           <h1
             onInput={(e: InputEvent) => this.renameList(e)}
             contentEditable={true}
-            style={{ color: this.listData.theme.color }}
+            style={{ color: this.listData?.theme.color }}
           >
-            {this.listData.title}
+            {this.listData?.title}
           </h1>
+        </div>
+        <div id="options-area">
+          <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
+            <AppIcon fill={this.listData?.theme.color} size={30} path={mdiDotsVertical} />
+          </button>
         </div>
       </div>
     );

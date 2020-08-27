@@ -6,7 +6,7 @@ import {
   mdiWhiteBalanceSunny,
 } from '@mdi/js';
 import { createStore } from '@stencil/store';
-import { set } from 'idb-keyval';
+import { set } from '../idb.worker';
 import { IList } from '../interfaces/list.interface';
 import { taskStore } from './tasks.store';
 

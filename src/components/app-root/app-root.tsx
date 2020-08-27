@@ -1,6 +1,6 @@
 import { Component, ComponentInterface, h } from '@stencil/core';
-import { get, set } from 'idb-keyval';
 import tippy from 'tippy.js';
+import { get, set } from '../../idb.worker';
 import { IIndex } from '../../interfaces/index.interface';
 import { IList } from '../../interfaces/list.interface';
 import { ITask } from '../../interfaces/task.interface';

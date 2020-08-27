@@ -1,0 +1,429 @@
+dependencies:
+  '@mdi/js': 5.5.55
+  '@stencil/store': 1.3.0_@stencil+core@2.0.0-6
+  idb-keyval: 3.2.0
+  tippy.js: 6.2.6
+devDependencies:
+  '@stencil/core': 2.0.0-6
+  '@stencil/router': 1.0.1
+  '@stencil/sass': 1.3.2_@stencil+core@2.0.0-6
+  typescript: 4.0.2
+  workbox-build: 4.3.1
+lockfileVersion: 5.1
+packages:
+  /@babel/runtime/7.11.2:
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: true
+    resolution:
+      integrity: sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==
+  /@hapi/address/2.1.4:
+    deprecated: This version has been deprecated and is no longer supported or maintained
+    dev: true
+    resolution:
+      integrity: sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ==
+  /@hapi/bourne/1.3.2:
+    deprecated: This version has been deprecated and is no longer supported or maintained
+    dev: true
+    resolution:
+      integrity: sha512-1dVNHT76Uu5N3eJNTYcvxee+jzX4Z9lfciqRRHCU27ihbUcYi+iSc2iml5Ke1LXe1SyJCLA0+14Jh4tXJgOppA==
+  /@hapi/hoek/8.5.1:
+    deprecated: This version has been deprecated and is no longer supported or maintained
+    dev: true
+    resolution:
+      integrity: sha512-yN7kbciD87WzLGc5539Tn0sApjyiGHAJgKvG9W8C7O+6c7qmoQMfVs0W4bX17eqz6C78QJqqFrtgdK5EWf6Qow==
+  /@hapi/joi/15.1.1:
+    dependencies:
+      '@hapi/address': 2.1.4
+      '@hapi/bourne': 1.3.2
+      '@hapi/hoek': 8.5.1
+      '@hapi/topo': 3.1.6
+    deprecated: 'joi is leaving the @hapi organization and moving back to ''joi'' (https://github.com/sideway/joi/issues/2411)'
+    dev: true
+    resolution:
+      integrity: sha512-entf8ZMOK8sc+8YfeOlM8pCfg3b5+WZIKBfUaaJT8UsjAAPjartzxIYm3TIbjvA4u+u++KbcXD38k682nVHDAQ==
+  /@hapi/topo/3.1.6:
+    dependencies:
+      '@hapi/hoek': 8.5.1
+    deprecated: This version has been deprecated and is no longer supported or maintained
+    dev: true
+    resolution:
+      integrity: sha512-tAag0jEcjwH+P2quUfipd7liWCNX2F8NvYjQp2wtInsZxnMlypdw0FtAOLxtvvkO+GSRRbmNi8m/5y42PQJYCQ==
+  /@mdi/js/5.5.55:
+    dev: false
+    resolution:
+      integrity: sha512-vbw1QW3M9A4vObU9WmTETTG7n7feC9HSn/3up8ZYk/M3K9fGL9FPtw0+bdASRu1UOBgEsqC9eBhNW10IOcwMIg==
+  /@popperjs/core/2.4.4:
+    dev: false
+    resolution:
+      integrity: sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
+  /@stencil/core/2.0.0-6:
+    dev: true
+    engines:
+      node: '>=12.10.0'
+      npm: '>=6.0.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-qN6NNm4QkHzQG/K6WYdoc4uM7qpRt0MWlBtc4N5EXRFg59wWE2W3ujSgkSW1lgJOvJ7SxPmeSuhcESb+j57z1g==
+  /@stencil/router/1.0.1:
+    dependencies:
+      '@stencil/state-tunnel': 1.0.1
+    dev: true
+    resolution:
+      integrity: sha512-ZMholl1BE+glNAc/8pcEb9RYkeH0XETxsJbx6D7f3azTmaTXqKYty1IACP/3BtVjuimpfLdxQJ+J95wKmnYBtA==
+  /@stencil/sass/1.3.2_@stencil+core@2.0.0-6:
+    dependencies:
+      '@stencil/core': 2.0.0-6
+    dev: true
+    peerDependencies:
+      '@stencil/core': ^1.0.2
+    resolution:
+      integrity: sha512-w6rkOsRIPY1rBa/13Wf+rMZrOzc6z86/Mkp3inzaYGsxBmLkf4PeP1rfaUB4SFDVRfMduP7FTd4ZJi/+FVrsMw==
+  /@stencil/state-tunnel/1.0.1:
+    dev: true
+    resolution:
+      integrity: sha512-DYG8uROgL9hkjVTCtCfRBb0d3FwpiFB0muRrNZQ2X1Qo5hxMuNNji76/ILddqeq0AfgkKCW82xrMPDpy+rNIhQ==
+  /@stencil/store/1.3.0_@stencil+core@2.0.0-6:
+    dependencies:
+      '@stencil/core': 2.0.0-6
+    dev: false
+    peerDependencies:
+      '@stencil/core': '>=1.10.0'
+    resolution:
+      integrity: sha512-e1/Ru/q8P5BkqUYMF+kW54rFWyH9XRABLcxFLruUlbw+ZIGN5OwKe6Rf1vw1wQSa/6vMy0EQq5IrkRYNhENpOA==
+  /babel-extract-comments/1.0.0:
+    dependencies:
+      babylon: 6.18.0
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-qWWzi4TlddohA91bFwgt6zO/J0X+io7Qp184Fw0m2JYRSTZnJbFR8+07KmzudHCZgOiKRCrjhylwv9Xd8gfhVQ==
+  /babel-plugin-syntax-object-rest-spread/6.13.0:
+    dev: true
+    resolution:
+      integrity: sha1-/WU28rzhODb/o6VFjEkDpZe7O/U=
+  /babel-plugin-transform-object-rest-spread/6.26.0:
+    dependencies:
+      babel-plugin-syntax-object-rest-spread: 6.13.0
+      babel-runtime: 6.26.0
+    dev: true
+    resolution:
+      integrity: sha1-DzZpLVD+9rfi1LOsFHgTepY7ewY=
+  /babel-runtime/6.26.0:
+    dependencies:
+      core-js: 2.6.11
+      regenerator-runtime: 0.11.1
+    dev: true
+    resolution:
+      integrity: sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
+  /babylon/6.18.0:
+    dev: true
+    hasBin: true
+    resolution:
+      integrity: sha512-q/UEjfGJ2Cm3oKV71DJz9d25TPnq5rhBVL2Q4fA5wcC3jcrdn7+SssEybFIxwAvvP+YCsCYNKughoF33GxgycQ==
+  /balanced-match/1.0.0:
+    dev: true
+    resolution:
+      integrity: sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
+  /brace-expansion/1.1.11:
+    dependencies:
+      balanced-match: 1.0.0
+      concat-map: 0.0.1
+    dev: true
+    resolution:
+      integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==
+  /common-tags/1.8.0:
+    dev: true
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
+  /concat-map/0.0.1:
+    dev: true
+    resolution:
+      integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
+  /core-js/2.6.11:
+    deprecated: 'core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.'
+    dev: true
+    requiresBuild: true
+    resolution:
+      integrity: sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
+  /fs-extra/4.0.3:
+    dependencies:
+      graceful-fs: 4.2.4
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: true
+    resolution:
+      integrity: sha512-q6rbdDd1o2mAnQreO7YADIxf/Whx4AHBiRf6d+/cVT8h44ss+lHgxf1FemcqDnQt9X3ct4McHr+JMGlYSsK7Cg==
+  /fs.realpath/1.0.0:
+    dev: true
+    resolution:
+      integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
+  /get-own-enumerable-property-symbols/3.0.2:
+    dev: true
+    resolution:
+      integrity: sha512-I0UBV/XOz1XkIJHEUDMZAbzCThU/H8DxmSfmdGcKPnVhu2VfFqr34jr9777IyaTYvxjedWhqVIilEDsCdP5G6g==
+  /glob/7.1.6:
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.0.4
+      once: 1.4.0
+      path-is-absolute: 1.0.1
+    dev: true
+    resolution:
+      integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
+  /graceful-fs/4.2.4:
+    dev: true
+    resolution:
+      integrity: sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
+  /idb-keyval/3.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-slx8Q6oywCCSfKgPgL0sEsXtPVnSbTLWpyiDcu6msHOyKOLari1TD1qocXVCft80umnkk3/Qqh3lwoFt8T/BPQ==
+  /inflight/1.0.6:
+    dependencies:
+      once: 1.4.0
+      wrappy: 1.0.2
+    dev: true
+    resolution:
+      integrity: sha1-Sb1jMdfQLQwJvJEKEHW6gWW1bfk=
+  /inherits/2.0.4:
+    dev: true
+    resolution:
+      integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+  /is-obj/1.0.1:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
+  /is-regexp/1.0.0:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
+  /jsonfile/4.0.0:
+    dev: true
+    optionalDependencies:
+      graceful-fs: 4.2.4
+    resolution:
+      integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
+  /lodash._reinterpolate/3.0.0:
+    dev: true
+    resolution:
+      integrity: sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
+  /lodash.template/4.5.0:
+    dependencies:
+      lodash._reinterpolate: 3.0.0
+      lodash.templatesettings: 4.2.0
+    dev: true
+    resolution:
+      integrity: sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==
+  /lodash.templatesettings/4.2.0:
+    dependencies:
+      lodash._reinterpolate: 3.0.0
+    dev: true
+    resolution:
+      integrity: sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
+  /minimatch/3.0.4:
+    dependencies:
+      brace-expansion: 1.1.11
+    dev: true
+    resolution:
+      integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
+  /once/1.4.0:
+    dependencies:
+      wrappy: 1.0.2
+    dev: true
+    resolution:
+      integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=
+  /path-is-absolute/1.0.1:
+    dev: true
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
+  /pretty-bytes/5.3.0:
+    dev: true
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-hjGrh+P926p4R4WbaB6OckyRtO0F0/lQBiT+0gnxjV+5kjPBrfVBFCsCLbMqVQeydvIoouYTCmmEURiH3R1Bdg==
+  /regenerator-runtime/0.11.1:
+    dev: true
+    resolution:
+      integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
+  /regenerator-runtime/0.13.7:
+    dev: true
+    resolution:
+      integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
+  /stringify-object/3.3.0:
+    dependencies:
+      get-own-enumerable-property-symbols: 3.0.2
+      is-obj: 1.0.1
+      is-regexp: 1.0.0
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-rHqiFh1elqCQ9WPLIC8I0Q/g/wj5J1eMkyoiD6eoQApWHP0FtlK7rqnhmabL5VUY9JQCcqwwvlOaSuutekgyrw==
+  /strip-comments/1.0.2:
+    dependencies:
+      babel-extract-comments: 1.0.0
+      babel-plugin-transform-object-rest-spread: 6.26.0
+    dev: true
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-kL97alc47hoyIQSV165tTt9rG5dn4w1dNnBhOQ3bOU1Nc1hel09jnXANaHJ7vzHLd4Ju8kseDGzlev96pghLFw==
+  /tippy.js/6.2.6:
+    dependencies:
+      '@popperjs/core': 2.4.4
+    dev: false
+    resolution:
+      integrity: sha512-0tTL3WQNT0nWmpslhDryRahoBm6PT9fh1xXyDfOsvZpDzq52by2rF2nvsW0WX2j9nUZP/jSGDqfKJGjCtoGFKg==
+  /typescript/4.0.2:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
+  /universalify/0.1.2:
+    dev: true
+    engines:
+      node: '>= 4.0.0'
+    resolution:
+      integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
+  /workbox-background-sync/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-1uFkvU8JXi7L7fCHVBEEnc3asPpiAL33kO495UMcD5+arew9IbKW2rV5lpzhoWcm/qhGB89YfO4PmB/0hQwPRg==
+  /workbox-broadcast-update/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-MTSfgzIljpKLTBPROo4IpKjESD86pPFlZwlvVG32Kb70hW+aob4Jxpblud8EhNb1/L5m43DUM4q7C+W6eQMMbA==
+  /workbox-build/4.3.1:
+    dependencies:
+      '@babel/runtime': 7.11.2
+      '@hapi/joi': 15.1.1
+      common-tags: 1.8.0
+      fs-extra: 4.0.3
+      glob: 7.1.6
+      lodash.template: 4.5.0
+      pretty-bytes: 5.3.0
+      stringify-object: 3.3.0
+      strip-comments: 1.0.2
+      workbox-background-sync: 4.3.1
+      workbox-broadcast-update: 4.3.1
+      workbox-cacheable-response: 4.3.1
+      workbox-core: 4.3.1
+      workbox-expiration: 4.3.1
+      workbox-google-analytics: 4.3.1
+      workbox-navigation-preload: 4.3.1
+      workbox-precaching: 4.3.1
+      workbox-range-requests: 4.3.1
+      workbox-routing: 4.3.1
+      workbox-strategies: 4.3.1
+      workbox-streams: 4.3.1
+      workbox-sw: 4.3.1
+      workbox-window: 4.3.1
+    dev: true
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-UHdwrN3FrDvicM3AqJS/J07X0KXj67R8Cg0waq1MKEOqzo89ap6zh6LmaLnRAjpB+bDIz+7OlPye9iii9KBnxw==
+  /workbox-cacheable-response/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-Rp5qlzm6z8IOvnQNkCdO9qrDgDpoPNguovs0H8C+wswLuPgSzSp9p2afb5maUt9R1uTIwOXrVQMmPfPypv+npw==
+  /workbox-core/4.3.1:
+    dev: true
+    resolution:
+      integrity: sha512-I3C9jlLmMKPxAC1t0ExCq+QoAMd0vAAHULEgRZ7kieCdUd919n53WC0AfvokHNwqRhGn+tIIj7vcb5duCjs2Kg==
+  /workbox-expiration/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-vsJLhgQsQouv9m0rpbXubT5jw0jMQdjpkum0uT+d9tTwhXcEZks7qLfQ9dGSaufTD2eimxbUOJfWLbNQpIDMPw==
+  /workbox-google-analytics/4.3.1:
+    dependencies:
+      workbox-background-sync: 4.3.1
+      workbox-core: 4.3.1
+      workbox-routing: 4.3.1
+      workbox-strategies: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-xzCjAoKuOb55CBSwQrbyWBKqp35yg1vw9ohIlU2wTy06ZrYfJ8rKochb1MSGlnoBfXGWss3UPzxR5QL5guIFdg==
+  /workbox-navigation-preload/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-K076n3oFHYp16/C+F8CwrRqD25GitA6Rkd6+qAmLmMv1QHPI2jfDwYqrytOfKfYq42bYtW8Pr21ejZX7GvALOw==
+  /workbox-precaching/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-piSg/2csPoIi/vPpp48t1q5JLYjMkmg5gsXBQkh/QYapCdVwwmKlU9mHdmy52KsDGIjVaqEUMFvEzn2LRaigqQ==
+  /workbox-range-requests/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-S+HhL9+iTFypJZ/yQSl/x2Bf5pWnbXdd3j57xnb0V60FW1LVn9LRZkPtneODklzYuFZv7qK6riZ5BNyc0R0jZA==
+  /workbox-routing/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-FkbtrODA4Imsi0p7TW9u9MXuQ5P4pVs1sWHK4dJMMChVROsbEltuE79fBoIk/BCztvOJ7yUpErMKa4z3uQLX+g==
+  /workbox-strategies/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-F/+E57BmVG8dX6dCCopBlkDvvhg/zj6VDs0PigYwSN23L8hseSRwljrceU2WzTvk/+BSYICsWmRq5qHS2UYzhw==
+  /workbox-streams/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-4Kisis1f/y0ihf4l3u/+ndMkJkIT4/6UOacU3A4BwZSAC9pQ9vSvJpIi/WFGQRH/uPXvuVjF5c2RfIPQFSS2uA==
+  /workbox-sw/4.3.1:
+    dev: true
+    resolution:
+      integrity: sha512-0jXdusCL2uC5gM3yYFT6QMBzKfBr2XTk0g5TPAV4y8IZDyVNDyj1a8uSXy3/XrvkVTmQvLN4O5k3JawGReXr9w==
+  /workbox-window/4.3.1:
+    dependencies:
+      workbox-core: 4.3.1
+    dev: true
+    resolution:
+      integrity: sha512-C5gWKh6I58w3GeSc0wp2Ne+rqVw8qwcmZnQGpjiek8A2wpbxSJb1FdCoQVO+jDJs35bFgo/WETgl1fqgsxN0Hg==
+  /wrappy/1.0.2:
+    dev: true
+    resolution:
+      integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
+specifiers:
+  '@mdi/js': ^5.5.55
+  '@stencil/core': ^2.0.0-6
+  '@stencil/router': ^1.0.1
+  '@stencil/sass': ^1.3.2
+  '@stencil/store': ^1.3.0
+  idb-keyval: ^3.2.0
+  tippy.js: ^6.2.6
+  typescript: ^4.0.2
+  workbox-build: 4.3.1

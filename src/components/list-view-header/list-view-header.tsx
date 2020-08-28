@@ -1,9 +1,9 @@
 import { mdiDotsVertical } from '@mdi/js';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, forceUpdate, h, Prop } from '@stencil/core';
 import tippy, { sticky } from 'tippy.js';
 import { AppIcon } from '../../functional-comps/app-icon';
 import type { IList } from '../../interfaces/list.interface';
-import { listStore } from '../../stores/lists.store';
+import { listStore, onListsStoreChange } from '../../stores/lists.store';
 
 @Component({
   tag: 'list-view-header',
@@ -31,7 +31,7 @@ export class ListViewHeader {
       interactive: true,
       trigger: 'focusin click',
       allowHTML: true,
-      content: '<list-options />',
+      content: `<list-options list='${JSON.stringify(this.listData)}' />`,
       hideOnClick: false,
       arrow: false,
       theme: 'theme-selector',
@@ -41,6 +41,8 @@ export class ListViewHeader {
     });
 
     // this.optionsButton.click();
+
+    onListsStoreChange('lists', () => forceUpdate(this));
   }
 
   render() {

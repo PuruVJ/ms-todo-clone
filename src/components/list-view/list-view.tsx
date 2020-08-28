@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, h, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, forceUpdate, h, Prop, State, Watch } from '@stencil/core';
 import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
@@ -42,13 +42,19 @@ export class ListView implements ComponentInterface {
 
     onListsStoreChange('lists', () => {
       this.handleStates();
+      forceUpdate(this);
     });
+
+    // Set the background
+    const el: HTMLDivElement = document.querySelector('#cover_img');
+
+    el.style.backgroundImage = this.listData.theme.image;
   }
 
   render() {
     return (
       <div id="container">
-        <list-view-header key={this.listData.id} listData={this.listData} />
+        <list-view-header listData={this.listData} />
         {this.listData.title}
       </div>
     );

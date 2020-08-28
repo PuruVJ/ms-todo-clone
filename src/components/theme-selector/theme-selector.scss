@@ -1,3 +1,27 @@
 :host {
   display: block;
+
+  width: 100%;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+button {
+  height: 3rem;
+  width: 3rem;
+
+  justify-self: center;
+
+  cursor: pointer;
+
+  margin: 5px 0;
+
+  border: none;
+  border-radius: 8px;
 }

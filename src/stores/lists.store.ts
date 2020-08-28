@@ -1,6 +1,5 @@
 import {
   mdiCalendarMonthOutline,
-  mdiDragHorizontalVariant,
   mdiFormatListBulleted,
   mdiStarOutline,
   mdiWhiteBalanceSunny,
@@ -21,8 +20,7 @@ const defaultLists: IList[] = [
     title: 'My Day',
     type: 'preset',
     theme: {
-      type: 'image',
-      imageURL: '../assets/wallpapers/1.jpg',
+      image: '../assets/wallpapers/1.jpg',
       color: '#FFEE58',
     },
   },
@@ -32,7 +30,7 @@ const defaultLists: IList[] = [
     title: 'Important',
     type: 'preset',
     theme: {
-      type: 'color',
+      image: "linear-gradient(to left, #fc466b, #3f5efb)",
       color: '#E88796',
     },
   },
@@ -42,7 +40,7 @@ const defaultLists: IList[] = [
     title: 'Planned',
     type: 'preset',
     theme: {
-      type: 'color',
+      image: "linear-gradient(to left, #00f260, #0575e6)",
       color: '#50E29B',
     },
   },
@@ -52,20 +50,20 @@ const defaultLists: IList[] = [
     title: 'All Tasks',
     type: 'preset',
     theme: {
-      type: 'color',
-      color: '#74C7FB',
+      image: "linear-gradient(to left, #12c2e9, #c471ed, #f64f59)",
+      color: "#74C7FB"
     },
   },
-  {
-    id: 'todo-app',
-    icon: mdiDragHorizontalVariant,
-    title: 'Todo App',
-    type: 'custom',
-    theme: {
-      type: 'color',
-      color: '#f4f5f8',
-    },
-  },
+  // {
+  //   id: 'todo-app',
+  //   icon: mdiDragHorizontalVariant,
+  //   title: 'Todo App',
+  //   type: 'custom',
+  //   theme: {
+  //     type: 'color',
+  //     color: '#f4f5f8',
+  //   },
+  // },
 ];
 
 const { state, onChange } = createStore<IListsStore>({

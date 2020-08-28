@@ -1,9 +1,9 @@
 import { Component, ComponentInterface, h } from '@stencil/core';
 import tippy from 'tippy.js';
 import { get, set } from '../../idb.worker';
-import { IIndex } from '../../interfaces/index.interface';
-import { IList } from '../../interfaces/list.interface';
-import { ITask } from '../../interfaces/task.interface';
+import type { IIndex } from '../../interfaces/index.interface';
+import type { IList } from '../../interfaces/list.interface';
+import type { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
 import { taskStore } from '../../stores/tasks.store';
 

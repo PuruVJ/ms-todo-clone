@@ -1,5 +1,4 @@
 export interface ITheme {
-  type: 'image' | 'color';
-  imageURL?: string;
+  image: string;
   color: string;
 }

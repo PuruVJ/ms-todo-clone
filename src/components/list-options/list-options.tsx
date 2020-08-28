@@ -1,4 +1,5 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { IList } from '../../interfaces/list.interface';
 
 @Component({
   tag: 'list-options',
@@ -6,10 +7,12 @@ import { Component, h } from '@stencil/core';
   scoped: true,
 })
 export class ListOptions {
+  @Prop() list!: string;
+
   render() {
     return (
       <div id="container">
-        <theme-selector />
+        <theme-selector list={JSON.parse(this.list) as IList} />
         <hr />
       </div>
     );

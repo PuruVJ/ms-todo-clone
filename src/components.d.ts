@@ -16,6 +16,7 @@ export namespace Components {
     interface AppTaskViewPane {
     }
     interface ListOptions {
+        "list": string;
     }
     interface ListView {
         "history": RouterHistory;
@@ -27,6 +28,7 @@ export namespace Components {
     interface NewTaskInput {
     }
     interface ThemeSelector {
+        "list": IList;
     }
 }
 declare global {
@@ -98,6 +100,7 @@ declare namespace LocalJSX {
     interface AppTaskViewPane {
     }
     interface ListOptions {
+        "list": string;
     }
     interface ListView {
         "history"?: RouterHistory;
@@ -109,6 +112,7 @@ declare namespace LocalJSX {
     interface NewTaskInput {
     }
     interface ThemeSelector {
+        "list": IList;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

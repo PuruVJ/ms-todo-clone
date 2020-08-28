@@ -47,12 +47,11 @@ body #cover_img {
 
   opacity: 1;
 
-  background-image: url(../assets/wallpapers/1.jpg);
   background-repeat: no-repeat;
   background-position: 50% 0;
   background-size: cover;
 
-  transition: inherit;
+  transition: background-image 150ms ease-in;
 }
 
 * {
@@ -88,10 +87,17 @@ hr {
 }
 
 .tippy-box[data-theme='theme-selector'] {
+  padding: 0;
+
+  background-color: rgba(var(--app-color-dark-rgb), 0.6) !important;
+  backdrop-filter: blur(30px);
+
+  border-radius: 8px;
+
   .tippy-content {
     padding: 0;
 
-    background-color: rgba(var(--app-color-dark-rgb), 0.6);
+    background-color: rgba(var(--app-color-dark-rgb), 0.6) !important;
     backdrop-filter: blur(30px);
 
     border-radius: 8px;

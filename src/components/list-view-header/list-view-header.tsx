@@ -1,5 +1,6 @@
 import { mdiDotsVertical } from '@mdi/js';
-import { Component, forceUpdate, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
+import { injectHistory, MatchResults } from '@stencil/router';
 import tippy, { sticky } from 'tippy.js';
 import { AppIcon } from '../../functional-comps/app-icon';
 import type { IList } from '../../interfaces/list.interface';
@@ -13,19 +14,33 @@ import { listStore, onListsStoreChange } from '../../stores/lists.store';
 export class ListViewHeader {
   @Prop() listData!: IList;
 
+  @Prop() match: MatchResults;
+
+  inputEl: HTMLInputElement;
+
   optionsButton: HTMLButtonElement;
 
+  @Watch('match') onListData() {
+    this.listData = { ...this.listData };
+  }
+
+  @Watch('listData') onListDataChange() {
+    this.inputEl.style.width = this.listData.title.length * 26 + 'px';
+  }
+
   renameList(e: InputEvent) {
-    const target = e.target as HTMLHeadingElement;
+    const target = e.target as HTMLInputElement;
 
     // Change the deep value
-    listStore.lists.find(({ id }) => id === this.listData.id).title = target.innerText;
+    listStore.lists.find(({ id }) => id === this.listData.id).title = target.value;
 
     // Rerender verything
     listStore.lists = [...listStore.lists];
   }
 
   componentDidLoad() {
+    this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
+
     // tippy('button', { content: 'Hello', theme: 'material', arrow: false });
     tippy('#lvh-options-button', {
       interactive: true,
@@ -40,22 +55,24 @@ export class ListViewHeader {
       plugins: [sticky],
     });
 
-    // this.optionsButton.click();
-
-    onListsStoreChange('lists', () => forceUpdate(this));
+    onListsStoreChange('lists', lists => {
+      this.listData = { ...lists.find(({ id }) => this.listData.id === id) };
+    });
   }
 
   render() {
     return (
       <div id="container">
         <div id="heading">
-          <h1
-            onInput={(e: InputEvent) => this.renameList(e)}
-            contentEditable={true}
-            style={{ color: this.listData?.theme.color }}
-          >
-            {this.listData?.title}
-          </h1>
+          <input
+            onInput={(e: InputEvent) => {
+              this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
+              this.renameList(e);
+            }}
+            ref={el => (this.inputEl = el)}
+            style={{ color: this.listData.theme.color }}
+            value={this.listData.title}
+          />
         </div>
         <div id="options-area">
           <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
@@ -66,3 +83,5 @@ export class ListViewHeader {
     );
   }
 }
+
+injectHistory(ListViewHeader);

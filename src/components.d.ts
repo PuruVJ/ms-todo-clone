@@ -24,6 +24,7 @@ export namespace Components {
     }
     interface ListViewHeader {
         "listData": IList;
+        "match": MatchResults;
     }
     interface NewTaskInput {
     }
@@ -108,6 +109,7 @@ declare namespace LocalJSX {
     }
     interface ListViewHeader {
         "listData": IList;
+        "match"?: MatchResults;
     }
     interface NewTaskInput {
     }

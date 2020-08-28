@@ -85,8 +85,6 @@ onChange('lists', async lists => {
       lists.find(({ id }) => id === listID),
     );
   }
-
-  console.log(lists);
 });
 
 export { state as listStore, onChange as onListsStoreChange };

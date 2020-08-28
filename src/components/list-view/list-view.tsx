@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, forceUpdate, h, Prop, State, Watch } from '@stencil/core';
+import { Component, ComponentInterface, h, Prop, State, Watch } from '@stencil/core';
 import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
 import { changeListTheme } from '../../helpers/change-theme';
 import type { IList } from '../../interfaces/list.interface';
@@ -49,7 +49,7 @@ export class ListView implements ComponentInterface {
 
     onListsStoreChange('lists', () => {
       this.handleStates();
-      forceUpdate(this);
+      // forceUpdate(this);
     });
 
     routeMatchStore.match = this.match;
@@ -59,8 +59,6 @@ export class ListView implements ComponentInterface {
     const image = this.listData.theme.image;
 
     el.style.backgroundImage = image.startsWith('../') ? image.replace(' ', '/') : image;
-
-    console.log(image.startsWith('../') ? image.replace(' ', '/') : image);
   }
 
   render() {

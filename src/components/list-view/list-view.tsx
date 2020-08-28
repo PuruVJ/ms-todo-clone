@@ -48,7 +48,11 @@ export class ListView implements ComponentInterface {
     // Set the background
     const el: HTMLDivElement = document.querySelector('#cover_img');
 
-    el.style.backgroundImage = this.listData.theme.image;
+    const image = this.listData.theme.image;
+
+    el.style.backgroundImage = image.startsWith('../') ? image.replace(' ', '/') : image;
+
+    console.log(image.startsWith('../') ? image.replace(' ', '/') : image);
   }
 
   render() {

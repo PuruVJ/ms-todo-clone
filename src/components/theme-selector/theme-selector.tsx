@@ -12,11 +12,12 @@ export class ThemeSelector {
   @Prop() list!: IList;
 
   render() {
+    const { theme, ...rest } = this.list;
     return (
       <div id="container">
-        {themes.map(({ image }) => (
+        {themes.map(({ image, color }) => (
           <button
-            onClick={() => changeListTheme(this.list)}
+            onClick={() => changeListTheme({ theme: { image, color }, ...rest })}
             style={{ backgroundImage: image }}
           ></button>
         ))}

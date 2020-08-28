@@ -4,6 +4,7 @@ import { changeListTheme } from '../../helpers/change-theme';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
+import { routeMatchStore } from '../../stores/route-match.store';
 import { taskStore } from '../../stores/tasks.store';
 
 @Component({
@@ -20,11 +21,13 @@ export class ListView implements ComponentInterface {
 
   @State() taskList: ITask[] = [];
 
-  @Watch('match') onMatchChange() {
+  @Watch('match') onMatchChange(newMatch: MatchResults) {
     this.handleStates();
 
     // handle themes
     changeListTheme(this.listData);
+
+    routeMatchStore.match = newMatch;
   }
 
   handleStates() {
@@ -49,6 +52,7 @@ export class ListView implements ComponentInterface {
       forceUpdate(this);
     });
 
+    routeMatchStore.match = this.match;
     // Set the background
     const el: HTMLDivElement = document.querySelector('#cover_img');
 

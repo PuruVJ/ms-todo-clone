@@ -30,7 +30,7 @@ const defaultLists: IList[] = [
     title: 'Important',
     type: 'preset',
     theme: {
-      image: "linear-gradient(to left, #fc466b, #3f5efb)",
+      image: 'linear-gradient(to left, #fc466b, #3f5efb)',
       color: '#E88796',
     },
   },
@@ -40,7 +40,7 @@ const defaultLists: IList[] = [
     title: 'Planned',
     type: 'preset',
     theme: {
-      image: "linear-gradient(to left, #00f260, #0575e6)",
+      image: 'linear-gradient(to left, #00f260, #0575e6)',
       color: '#50E29B',
     },
   },
@@ -50,8 +50,8 @@ const defaultLists: IList[] = [
     title: 'All Tasks',
     type: 'preset',
     theme: {
-      image: "linear-gradient(to left, #12c2e9, #c471ed, #f64f59)",
-      color: "#74C7FB"
+      image: 'linear-gradient(to left, #12c2e9, #c471ed, #f64f59)',
+      color: '#74C7FB',
     },
   },
   // {
@@ -85,6 +85,8 @@ onChange('lists', async lists => {
       lists.find(({ id }) => id === listID),
     );
   }
+
+  console.log(lists);
 });
 
 export { state as listStore, onChange as onListsStoreChange };

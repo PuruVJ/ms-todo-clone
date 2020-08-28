@@ -1,6 +1,9 @@
 import { Component, h, Prop } from '@stencil/core';
+import { injectHistory } from '@stencil/router';
 import { changeListTheme } from '../../helpers/change-theme';
 import { IList } from '../../interfaces/list.interface';
+import { listStore } from '../../stores/lists.store';
+import { onRouteMatchChange } from '../../stores/route-match.store';
 import { themes } from '../../themes';
 
 @Component({
@@ -10,6 +13,16 @@ import { themes } from '../../themes';
 })
 export class ThemeSelector {
   @Prop() list!: IList;
+
+  componentDidLoad() {
+    onRouteMatchChange('match', newMatch => {
+      const { id } = newMatch.params;
+
+      console.log(newMatch);
+
+      this.list = listStore.lists.find(({ id: lID }) => id === lID);
+    });
+  }
 
   render() {
     const { theme, ...rest } = this.list;
@@ -25,3 +38,5 @@ export class ThemeSelector {
     );
   }
 }
+
+injectHistory(ThemeSelector);

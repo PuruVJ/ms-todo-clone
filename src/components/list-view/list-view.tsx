@@ -1,5 +1,6 @@
 import { Component, ComponentInterface, forceUpdate, h, Prop, State, Watch } from '@stencil/core';
 import { injectHistory, MatchResults, RouterHistory } from '@stencil/router';
+import { changeListTheme } from '../../helpers/change-theme';
 import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
@@ -21,6 +22,9 @@ export class ListView implements ComponentInterface {
 
   @Watch('match') onMatchChange() {
     this.handleStates();
+
+    // handle themes
+    changeListTheme(this.listData);
   }
 
   handleStates() {

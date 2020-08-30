@@ -21,13 +21,8 @@ export class ListView implements ComponentInterface {
 
   @State() taskList: ITask[] = [];
 
-  @Watch('match') onMatchChange(newMatch: MatchResults) {
-    this.handleStates();
-
-    // handle themes
-    changeListTheme(this.listData);
-
-    routeMatchStore.match = newMatch;
+  @Watch('match') async onMatchChange() {
+    await this.componentWillLoad();
   }
 
   handleStates() {
@@ -53,19 +48,15 @@ export class ListView implements ComponentInterface {
     });
 
     routeMatchStore.match = this.match;
-    // Set the background
-    const el: HTMLDivElement = document.querySelector('#cover_img');
 
-    const image = this.listData.theme.image;
-
-    el.style.backgroundImage = image.startsWith('../') ? image.replace(' ', '/') : image;
+    changeListTheme(this.listData);
   }
 
   render() {
     return (
       <div id="container">
         <list-view-header listData={this.listData} />
-        {this.listData.title}
+        {this.listData?.title}
       </div>
     );
   }

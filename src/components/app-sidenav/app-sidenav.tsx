@@ -42,7 +42,7 @@ export class AppSidenav {
       (el.nextElementSibling as HTMLLIElement)?.focus();
     }
 
-    if (['Enter', ' ', 'Spacebar'].some(key => key === e.key)) {
+    if (['Enter', ' ', 'Spacebar'].includes(e.key)) {
       this.history.push(`/${this.sortedLists()[this.selectedListIndex].id}`);
     }
   }

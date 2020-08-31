@@ -52,7 +52,7 @@ body #cover_img {
   background-position: 50% 0;
   background-size: cover;
 
-  transition: background-image 150ms ease-in;
+  transition: opacity 150ms ease-in;
 }
 
 * {

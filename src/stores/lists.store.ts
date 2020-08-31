@@ -20,7 +20,7 @@ const defaultLists: IList[] = [
     title: 'My Day',
     type: 'preset',
     theme: {
-      image: '../../assets/wallpapers/1.jpg',
+      image: 'url(./assets/wallpapers/1.jpg)',
       color: '#FFEE58',
     },
   },
@@ -70,7 +70,7 @@ const { state, onChange } = createStore<IListsStore>({
   lists: defaultLists,
 });
 
-const memoizedList = [...state.lists];
+let memoizedList = [...state.lists];
 
 onChange('lists', async lists => {
   const listIDs = lists.map(({ id }) => id);
@@ -93,6 +93,8 @@ onChange('lists', async lists => {
       );
     }
   }
+
+  memoizedList = [...lists];
 });
 
 export { state as listStore, onChange as onListsStoreChange };

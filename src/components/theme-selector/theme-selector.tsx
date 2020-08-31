@@ -18,8 +18,6 @@ export class ThemeSelector {
     onRouteMatchChange('match', newMatch => {
       const { id } = newMatch.params;
 
-      console.log(newMatch);
-
       this.list = listStore.lists.find(({ id: lID }) => id === lID);
     });
   }
@@ -30,7 +28,7 @@ export class ThemeSelector {
       <div id="container">
         {themes.map(({ image, color }) => (
           <button
-            onClick={() => changeListTheme({ theme: { image, color }, ...rest })}
+            onClick={async () => await changeListTheme({ theme: { image, color }, ...rest })}
             style={{ backgroundImage: image }}
           ></button>
         ))}

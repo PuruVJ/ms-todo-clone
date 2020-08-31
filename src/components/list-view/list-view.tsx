@@ -49,7 +49,7 @@ export class ListView implements ComponentInterface {
 
     routeMatchStore.match = this.match;
 
-    changeListTheme(this.listData);
+    await changeListTheme(this.listData);
   }
 
   render() {

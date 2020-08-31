@@ -2,7 +2,6 @@ import { mdiDotsVertical } from '@mdi/js';
 import { Component, h, Prop, Watch } from '@stencil/core';
 import { injectHistory, MatchResults } from '@stencil/router';
 import tippy, { sticky } from 'tippy.js';
-import { Memoize } from 'typescript-memoize';
 import { AppIcon } from '../../functional-comps/app-icon';
 import type { IList } from '../../interfaces/list.interface';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
@@ -29,7 +28,7 @@ export class ListViewHeader {
     this.inputEl.style.width = this.listData.title.length * 26 + 'px';
   }
 
-  @Memoize() renameList(e: InputEvent) {
+  renameList(e: InputEvent) {
     const target = e.target as HTMLInputElement;
 
     // Change the deep value
@@ -71,7 +70,7 @@ export class ListViewHeader {
               this.renameList(e);
             }}
             ref={el => (this.inputEl = el)}
-            style={{ color: this.listData.theme.color }}
+            style={{ color: this.listData?.theme.color }}
             value={this.listData.title}
           />
         </div>

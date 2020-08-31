@@ -18,6 +18,7 @@ import { taskStore } from '../../stores/tasks.store';
 export class AppRoot implements ComponentInterface {
   async componentWillLoad() {
     await ensureLocalData();
+    console.log(listStore.lists);
   }
 
   componentDidLoad() {

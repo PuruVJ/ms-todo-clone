@@ -33,7 +33,7 @@ export class ListView implements ComponentInterface {
     this.taskList = getTasks(this.listData.id);
   }
 
-  async componentWillLoad() {
+  componentWillLoad = async () => {
     if (this.match.url === '/') {
       // Go to my-day page
       this.history.push('/my-day');
@@ -50,24 +50,21 @@ export class ListView implements ComponentInterface {
     routeMatchStore.match = this.match;
 
     await changeListTheme(this.listData);
-  }
+  };
 
-  render() {
-    return (
-      <div id="container">
-        <list-view-header listData={this.listData} />
-        {this.listData?.title}
-      </div>
-    );
-  }
+  render = () => (
+    <div id="container">
+      <list-view-header listData={this.listData} />
+      {this.listData?.title}
+    </div>
+  );
 }
 
 injectHistory(ListView);
 
-const getTasks = (listID: string): ITask[] => {
-  return taskStore.tasks.filter(({ listIDs }) =>
+const getTasks = (listID: string) =>
+  taskStore.tasks.filter(({ listIDs }) =>
     listIDs
       .map(lId => listStore.lists.find(({ id }) => id === lId))
       .some(({ id }) => id === listID),
   );
-};

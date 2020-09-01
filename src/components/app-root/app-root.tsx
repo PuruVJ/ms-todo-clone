@@ -16,10 +16,9 @@ import { taskStore } from '../../stores/tasks.store';
   scoped: true,
 })
 export class AppRoot implements ComponentInterface {
-  async componentWillLoad() {
+  componentWillLoad = async () => {
     await ensureLocalData();
-    console.log(listStore.lists);
-  }
+  };
 
   componentDidLoad() {
     tippy('[data-tooltip]', {
@@ -29,23 +28,21 @@ export class AppRoot implements ComponentInterface {
     });
   }
 
-  render() {
-    return (
-      <div id="container">
-        <app-sidenav />
-        <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url="/" component="list-view" exact={true} />
-              <stencil-route url="/:id" component="list-view" />
-            </stencil-route-switch>
-          </stencil-router>
-          <new-task-input />
-        </main>
-        <app-task-view-pane />
-      </div>
-    );
-  }
+  render = () => (
+    <div id="container">
+      <app-sidenav />
+      <main>
+        <stencil-router>
+          <stencil-route-switch scrollTopOffset={0}>
+            <stencil-route url="/" component="list-view" exact={true} />
+            <stencil-route url="/:id" component="list-view" />
+          </stencil-route-switch>
+        </stencil-router>
+        <new-task-input />
+      </main>
+      <app-task-view-pane />
+    </div>
+  );
 }
 
 async function ensureLocalData() {

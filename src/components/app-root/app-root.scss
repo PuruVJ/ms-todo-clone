@@ -3,6 +3,8 @@
 
   height: 100%;
   width: 100%;
+
+  position: relative;
 }
 
 #container {
@@ -12,6 +14,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
 
+  position: relative;
 }
 
 main {

@@ -11,14 +11,14 @@
   height: 100%;
   width: 100%;
 
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-
-  position: relative;
+  display: flex;
 }
 
 main {
+  flex-grow: 1;
+
   overflow: hidden;
 
   position: relative;
+
 }

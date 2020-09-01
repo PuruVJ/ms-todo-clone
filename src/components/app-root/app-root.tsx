@@ -38,7 +38,9 @@ export class AppRoot implements ComponentInterface {
             <stencil-route url="/:id" component="list-view" />
           </stencil-route-switch>
         </stencil-router>
-        <new-task-input />
+        <div id="task-input">
+          <new-task-input />
+        </div>
       </main>
       <app-task-view-pane />
     </div>

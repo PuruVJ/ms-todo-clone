@@ -12,7 +12,7 @@ export class NewTaskInput {
 
   inputEl: HTMLInputElement;
 
-  handleExteriorFocus(e: FocusEvent | MouseEvent) {
+  handleExteriorFocus() {
     this.inputEl.focus();
   }
 
@@ -21,8 +21,8 @@ export class NewTaskInput {
       id="container"
       class={{ focused: this.containerFocused }}
       tabindex={-!!this.containerFocused}
-      onClick={e => this.handleExteriorFocus(e)}
-      onFocus={e => this.handleExteriorFocus(e)}
+      onClick={() => this.handleExteriorFocus()}
+      onFocus={() => this.handleExteriorFocus()}
     >
       <span id="init-icon">
         <AppIcon path={mdiPlus} />

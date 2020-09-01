@@ -70,8 +70,6 @@ const { state, onChange } = createStore<IListsStore>({
   lists: defaultLists,
 });
 
-let memoizedList = [...state.lists];
-
 onChange('lists', async lists => {
   const listIDs = lists.map(({ id }) => id);
 
@@ -82,19 +80,11 @@ onChange('lists', async lists => {
   });
 
   for (let listID of listIDs) {
-    // Memoization
-    const memoListItem = memoizedList.find(({ id }) => id === listID);
-    const newListItem = memoizedList.find(({ id }) => id === listID);
-
-    if (JSON.stringify(memoListItem) !== JSON.stringify(newListItem)) {
-      await set(
-        `list:${listID}`,
-        lists.find(({ id }) => id === listID),
-      );
-    }
+    await set(
+      `list:${listID}`,
+      lists.find(({ id }) => id === listID),
+    );
   }
-
-  memoizedList = [...lists];
 });
 
 export { state as listStore, onChange as onListsStoreChange };

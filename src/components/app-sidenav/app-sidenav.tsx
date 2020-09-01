@@ -13,6 +13,8 @@ export class AppSidenav {
 
   @State() selectedListIndex: number = 0;
 
+  listsNavItems: HTMLLIElement[] = [];
+
   sortedLists() {
     const presetLists = listStore.lists.filter(({ type }) => type === 'preset');
     const customLists = listStore.lists.filter(({ type }) => type === 'custom');
@@ -22,24 +24,20 @@ export class AppSidenav {
   }
 
   handleKeyboard(e: KeyboardEvent) {
-    const el = e.target as HTMLLIElement;
+    const responses = {
+      ArrowUp: -1,
+      ArrowDown: +1,
+    };
 
-    if (e.key === 'ArrowUp') {
+    if (e.key in responses) {
+      const num = responses[e.key];
+
       this.selectedListIndex = Math.min(
         listStore.lists.length - 1,
-        Math.max(0, this.selectedListIndex - 1),
+        Math.max(0, this.selectedListIndex + num),
       );
 
-      (el.previousElementSibling as HTMLLIElement)?.focus();
-    }
-
-    if (e.key === 'ArrowDown') {
-      this.selectedListIndex = Math.min(
-        listStore.lists.length - 1,
-        Math.max(0, this.selectedListIndex + 1),
-      );
-
-      (el.nextElementSibling as HTMLLIElement)?.focus();
+      this.listsNavItems[this.selectedListIndex].focus()
     }
 
     if (['Enter', ' ', 'Spacebar'].includes(e.key)) {
@@ -59,6 +57,7 @@ export class AppSidenav {
               onClick={() => this.history.push(`/${id}`)}
               tabIndex={i === this.selectedListIndex ? 0 : -1}
               id={`${type}-lists`}
+              ref={el => this.listsNavItems.push(el)}
               class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
             >
               <span class="icon">

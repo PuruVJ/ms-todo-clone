@@ -45,6 +45,12 @@ export class ThemeSelector {
     });
   }
 
+  processImage(image: string) {
+    if (!image.startsWith('url(')) return image;
+
+    return image.replace('.jpg', '-thumb.jpg');
+  }
+
   render() {
     const { theme, ...rest } = this.list;
     return (
@@ -55,7 +61,7 @@ export class ThemeSelector {
             ref={el => this.buttonsArr.push(el)}
             onKeyUp={e => this.handleRoving(e)}
             onClick={async () => await changeListTheme({ theme: { image, color }, ...rest })}
-            style={{ backgroundImage: image }}
+            style={{ backgroundImage: this.processImage(image) }}
           ></button>
         ))}
       </div>

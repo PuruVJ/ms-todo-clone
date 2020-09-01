@@ -45,4 +45,12 @@ export const themes: ITheme[] = [
     image: 'linear-gradient(to right, #0f0c29, #302b63, #24243e)',
     color: '#838ab9',
   },
+  {
+    image: 'url(./assets/wallpapers/1.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/2.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
 ];

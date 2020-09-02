@@ -29,6 +29,9 @@ export class ListView implements ComponentInterface {
     // Now load up data
     this.listData = listStore.lists.find(({ id }) => id === this.match.params.id);
 
+    // Set the global current list
+    listStore.currentList = this.listData;
+
     // Get all the tasks associated to this list
     this.taskList = getTasks(this.listData.id);
   }
@@ -54,7 +57,7 @@ export class ListView implements ComponentInterface {
 
   render = () => (
     <div id="container">
-      <list-view-header listData={this.listData} />
+      <list-view-header />
       {this.listData?.title}
     </div>
   );

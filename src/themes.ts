@@ -6,7 +6,7 @@ export const themes: ITheme[] = [
     image: 'linear-gradient(to left, #8e2de2, #4a00e0)',
   },
   {
-    color: '#2980b9',
+    color: '#ffffff',
     image: 'linear-gradient(to left, #2980b9, #6dd5fa, #ffffff)',
   },
   {

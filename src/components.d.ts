@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
-import { IList } from "./interfaces/list.interface";
 export namespace Components {
     interface AppRoot {
     }
@@ -16,20 +15,17 @@ export namespace Components {
     interface AppTaskViewPane {
     }
     interface ListOptions {
-        "list": string;
     }
     interface ListView {
         "history": RouterHistory;
         "match": MatchResults;
     }
     interface ListViewHeader {
-        "listData": IList;
         "match": MatchResults;
     }
     interface NewTaskInput {
     }
     interface ThemeSelector {
-        "list": IList;
     }
 }
 declare global {
@@ -101,20 +97,17 @@ declare namespace LocalJSX {
     interface AppTaskViewPane {
     }
     interface ListOptions {
-        "list": string;
     }
     interface ListView {
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
     interface ListViewHeader {
-        "listData": IList;
         "match"?: MatchResults;
     }
     interface NewTaskInput {
     }
     interface ThemeSelector {
-        "list": IList;
     }
     interface IntrinsicElements {
         "app-root": AppRoot;

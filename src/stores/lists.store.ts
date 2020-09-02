@@ -11,6 +11,7 @@ import { taskStore } from './tasks.store';
 
 interface IListsStore {
   lists: IList[];
+  currentList: IList;
 }
 
 const defaultLists: IList[] = [
@@ -45,9 +46,9 @@ const defaultLists: IList[] = [
     },
   },
   {
-    id: 'all-tasks',
+    id: 'tasks',
     icon: mdiFormatListBulleted,
-    title: 'All Tasks',
+    title: 'Tasks',
     type: 'preset',
     theme: {
       image: 'linear-gradient(to left, #12c2e9, #c471ed, #f64f59)',
@@ -68,10 +69,15 @@ const defaultLists: IList[] = [
 
 const { state, onChange } = createStore<IListsStore>({
   lists: defaultLists,
+  currentList: null,
 });
 
 onChange('lists', async lists => {
   const listIDs = lists.map(({ id }) => id);
+
+  // Change the currentList too
+  state.currentList = {...lists.find(({ id }) => state.currentList?.id === id)};
+  console.log(state.currentList);
 
   // Re-write the new changes to indexeddb
   await set('index', {

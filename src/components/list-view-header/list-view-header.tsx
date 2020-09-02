@@ -1,9 +1,8 @@
 import { mdiDotsVertical } from '@mdi/js';
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { injectHistory, MatchResults } from '@stencil/router';
 import tippy, { sticky } from 'tippy.js';
 import { AppIcon } from '../../functional-comps/app-icon';
-import type { IList } from '../../interfaces/list.interface';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
 
 @Component({
@@ -12,27 +11,17 @@ import { listStore, onListsStoreChange } from '../../stores/lists.store';
   scoped: true,
 })
 export class ListViewHeader {
-  @Prop() listData!: IList;
-
   @Prop() match: MatchResults;
 
   inputEl: HTMLInputElement;
 
   optionsButton: HTMLButtonElement;
 
-  @Watch('match') onListData() {
-    this.listData = { ...this.listData };
-  }
-
-  @Watch('listData') onListDataChange() {
-    this.inputEl.style.width = this.listData.title.length * 26 + 'px';
-  }
-
   renameList(e: InputEvent) {
     const target = e.target as HTMLInputElement;
 
     // Change the deep value
-    listStore.lists.find(({ id }) => id === this.listData.id).title = target.value;
+    listStore.lists.find(({ id }) => id === listStore.currentList.id).title = target.value;
 
     // Rerender verything
     listStore.lists = [...listStore.lists];
@@ -46,7 +35,7 @@ export class ListViewHeader {
       interactive: true,
       trigger: 'focusin click',
       allowHTML: true,
-      content: `<list-options list='${JSON.stringify(this.listData)}' />`,
+      content: `<list-options />`,
       hideOnClick: false,
       arrow: false,
       theme: 'theme-selector',
@@ -55,33 +44,31 @@ export class ListViewHeader {
       plugins: [sticky],
     });
 
-    onListsStoreChange('lists', lists => {
-      this.listData = { ...lists.find(({ id }) => this.listData.id === id) };
+    onListsStoreChange('currentList', () => {
+      this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
     });
   }
 
-  render() {
-    return (
-      <div id="container">
-        <div id="heading">
-          <input
-            onInput={(e: InputEvent) => {
-              this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
-              this.renameList(e);
-            }}
-            ref={el => (this.inputEl = el)}
-            style={{ color: this.listData?.theme.color }}
-            value={this.listData.title}
-          />
-        </div>
-        <div id="options-area">
-          <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
-            <AppIcon fill={this.listData?.theme.color} size={30} path={mdiDotsVertical} />
-          </button>
-        </div>
+  render = () => (
+    <div id="container">
+      <div id="heading">
+        <input
+          onInput={(e: InputEvent) => {
+            this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
+            this.renameList(e);
+          }}
+          ref={el => (this.inputEl = el)}
+          style={{ color: listStore.currentList.theme.color }}
+          value={listStore.currentList?.title}
+        />
       </div>
-    );
-  }
+      <div id="options-area">
+        <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
+          <AppIcon fill={listStore.currentList?.theme.color} size={30} path={mdiDotsVertical} />
+        </button>
+      </div>
+    </div>
+  );
 }
 
 injectHistory(ListViewHeader);

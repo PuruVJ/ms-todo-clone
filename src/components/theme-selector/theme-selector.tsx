@@ -1,9 +1,7 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, State } from '@stencil/core';
 import { injectHistory } from '@stencil/router';
 import { changeListTheme } from '../../helpers/change-theme';
-import { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';
-import { onRouteMatchChange } from '../../stores/route-match.store';
 import { themes } from '../../themes';
 
 @Component({
@@ -12,8 +10,6 @@ import { themes } from '../../themes';
   scoped: true,
 })
 export class ThemeSelector {
-  @Prop() list!: IList;
-
   @State() selectedIndex: number = 0;
 
   buttonsArr: HTMLButtonElement[] = [];
@@ -38,11 +34,10 @@ export class ThemeSelector {
   }
 
   componentDidLoad() {
-    onRouteMatchChange('match', newMatch => {
-      const { id } = newMatch.params;
-
-      this.list = listStore.lists.find(({ id: lID }) => id === lID);
-    });
+    // onRouteMatchChange('match', newMatch => {
+    //   const { id } = newMatch.params;
+    //   this.list = listStore.lists.find(({ id: lID }) => id === lID);
+    // });
   }
 
   processImage(image: string) {
@@ -52,7 +47,7 @@ export class ThemeSelector {
   }
 
   render() {
-    const { theme, ...rest } = this.list;
+    const { theme, ...rest } = listStore.currentList;
     return (
       <div id="container">
         {themes.map(({ image, color }, i) => (

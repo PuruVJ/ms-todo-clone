@@ -37,7 +37,7 @@ export class AppSidenav {
         Math.max(0, this.selectedListIndex + num),
       );
 
-      this.listsNavItems[this.selectedListIndex].focus()
+      this.listsNavItems[this.selectedListIndex].focus();
     }
 
     if (['Enter', ' ', 'Spacebar'].includes(e.key)) {
@@ -45,31 +45,32 @@ export class AppSidenav {
     }
   }
 
-  render() {
-    return (
-      <aside>
-        <h2>Todo App</h2>
-        <ul class="lists">
-          {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
-            <li
-              aria-label={`${title} list`}
-              onKeyDown={e => this.handleKeyboard(e)}
-              onClick={() => this.history.push(`/${id}`)}
-              tabIndex={i === this.selectedListIndex ? 0 : -1}
-              id={`${type}-lists`}
-              ref={el => this.listsNavItems.push(el)}
-              class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
-            >
-              <span class="icon">
-                <AppIcon fill={theme.color} path={icon} />
-              </span>
-              <span class="title">{title}</span>
-            </li>,
-          ])}
-        </ul>
-      </aside>
-    );
-  }
+  render = () => (
+    <aside>
+      <h2>Todo App</h2>
+      <ul class="lists">
+        {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
+          <li
+            aria-label={`${title} list`}
+            onKeyDown={e => this.handleKeyboard(e)}
+            onClick={() => {
+              this.selectedListIndex = i;
+              this.history.push(`/${id}`);
+            }}
+            tabIndex={i === this.selectedListIndex ? 0 : -1}
+            id={`${type}-lists`}
+            ref={el => this.listsNavItems.push(el)}
+            class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
+          >
+            <span class="icon">
+              <AppIcon fill={theme.color} path={icon} />
+            </span>
+            <span class="title">{title}</span>
+          </li>,
+        ])}
+      </ul>
+    </aside>
+  );
 }
 
 injectHistory(AppSidenav);

@@ -1,4 +1,5 @@
 import { Component, ComponentInterface, h } from '@stencil/core';
+import { isPast } from 'date-fns';
 import tippy from 'tippy.js';
 import { get, set } from '../../idb.worker';
 import type { IIndex } from '../../interfaces/index.interface';
@@ -18,6 +19,7 @@ import { taskStore } from '../../stores/tasks.store';
 export class AppRoot implements ComponentInterface {
   componentWillLoad = async () => {
     await ensureLocalData();
+    await ensureListsPresence();
   };
 
   componentDidLoad() {
@@ -45,6 +47,35 @@ export class AppRoot implements ComponentInterface {
       <app-task-view-pane />
     </div>
   );
+}
+
+/**
+ * Ensure tasks are in right lists
+ */
+async function ensureListsPresence() {
+  const { tasks } = taskStore;
+
+  /**
+   * Set `my-day` on tasks whose due date is later
+   */
+
+  for (let task of tasks) {
+    const dueDate = task.dateDue;
+
+    // Compare
+    if (!isPast(dueDate) && !task.listIDs.includes('my-day')) {
+      taskStore.tasks.find(({ id }) => id === task.id).listIDs.push('my-day');
+    }
+
+    if (isPast(dueDate) && task.listIDs.includes('my-day')) {
+      // Remove `my-day`
+      taskStore.tasks.find(({ id }) => id === task.id).listIDs = task.listIDs.filter(
+        lID => lID !== 'my-day',
+      );
+    }
+  }
+
+  taskStore.tasks = [...taskStore.tasks];
 }
 
 async function ensureLocalData() {

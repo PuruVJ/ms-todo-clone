@@ -17,8 +17,8 @@ body {
   margin: 0px;
   padding: 0px;
 
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   line-height: 1.618;
   letter-spacing: 0.7px;
 
@@ -55,7 +55,6 @@ body #cover_img {
   background-size: cover;
 
   transition: opacity 150ms ease-in;
-
 }
 
 * {
@@ -98,18 +97,9 @@ hr {
   padding: 0;
 
   background-color: rgba(var(--app-color-dark-rgb), 0.6) !important;
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(12px);
 
   border-radius: 8px;
-
-  .tippy-content {
-    padding: 0;
-
-    background-color: rgba(var(--app-color-dark-rgb), 0.6) !important;
-    backdrop-filter: blur(30px);
-
-    border-radius: 8px;
-  }
 }
 
 input {

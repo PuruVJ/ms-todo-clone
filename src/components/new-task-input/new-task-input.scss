@@ -20,16 +20,17 @@
   background-color: rgba(var(--app-color-dark-rgb), 0.7);
   backdrop-filter: blur(15px);
 
-  padding: 0.8rem 1rem;
+  padding: 0 1rem;
 
   width: 100%;
+  height: 3.3rem;
 
   cursor: text;
 
   // padding: 1rem;
 
   &.focused {
-    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-light-rgb), 0.9)
+    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-light-rgb), 0.9);
   }
 }
 
@@ -58,4 +59,45 @@ span#init-icon {
   place-items: center;
 
   margin-right: 0.5rem;
+}
+
+#button-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.task-input-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+
+  border: none;
+  border-radius: 0.5rem;
+
+  background: transparent;
+  fill: var(--app-color-light);
+  color: var(--app-color-light);
+
+  height: 2.5rem;
+
+  cursor: pointer;
+
+  // transition: backdrop-filter 150ms ease-in-out;
+
+  &:focus,
+  &:hover {
+    background-color: rgba(var(--app-color-light-rgb), 0.1);
+  }
+}
+
+#submit-button {
+  width: 2.5rem;
+
+  border-radius: 50%;
+}
+
+#due-date-button {
+  width: 12rem;
 }

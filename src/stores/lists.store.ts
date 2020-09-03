@@ -2,7 +2,7 @@ import {
   mdiCalendarMonthOutline,
   mdiFormatListBulleted,
   mdiStarOutline,
-  mdiWhiteBalanceSunny,
+  mdiWhiteBalanceSunny
 } from '@mdi/js';
 import { createStore } from '@stencil/store';
 import { set } from '../idb.worker';

@@ -58,7 +58,9 @@ export class ListView implements ComponentInterface {
   render = () => (
     <div id="container">
       <list-view-header />
-      {this.listData?.title}
+      {taskStore.tasks
+        .filter(({ listIDs }) => listIDs.includes(this.listData.id))
+        .map(task => task.title)}
     </div>
   );
 }

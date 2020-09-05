@@ -28,7 +28,7 @@ export namespace Components {
     }
     interface TaskItem {
         "focusContainer": () => Promise<void>;
-        "tabIndex": number;
+        "focusIndex": number;
         "task": ITask;
     }
     interface TasksList {
@@ -131,7 +131,7 @@ declare namespace LocalJSX {
     interface NewTaskInput {
     }
     interface TaskItem {
-        "tabIndex"?: number;
+        "focusIndex"?: number;
         "task"?: ITask;
     }
     interface TasksList {

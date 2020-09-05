@@ -37,7 +37,7 @@ export class TasksList {
           onKeyDown={e => this.handleKeyBoard(e)}
           onClick={() => (this.selectedIndex = i)}
           ref={el => this.taskItemEls.push(el)}
-          tabIndex={this.selectedIndex === i ? 0 : -1}
+          focusIndex={this.selectedIndex === i ? 0 : -1}
           task={task}
         />
       ))}

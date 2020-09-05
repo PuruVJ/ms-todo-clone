@@ -45,10 +45,7 @@ export class ListView implements ComponentInterface {
 
     this.handleStates();
 
-    onListsStoreChange('lists', () => {
-      this.handleStates();
-      // forceUpdate(this);
-    });
+    onListsStoreChange('lists', () => this.handleStates());
 
     routeMatchStore.match = this.match;
 
@@ -58,9 +55,9 @@ export class ListView implements ComponentInterface {
   render = () => (
     <div id="container">
       <list-view-header />
-      {taskStore.tasks
-        .filter(({ listIDs }) => listIDs.includes(this.listData.id))
-        .map(task => task.title)}
+      <tasks-list
+        taskList={taskStore.tasks.filter(({ listIDs }) => listIDs.includes(this.listData?.id))}
+      />
     </div>
   );
 }

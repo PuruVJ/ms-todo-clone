@@ -58,7 +58,7 @@ export class ListViewHeader {
             this.renameList(e);
           }}
           ref={el => (this.inputEl = el)}
-          style={{ color: listStore.currentList.theme.color }}
+          style={{ color: listStore.currentList?.theme.color }}
           value={listStore.currentList?.title}
         />
       </div>

@@ -84,8 +84,8 @@ export class NewTaskInput {
     <form onSubmit={e => this.submitForm(e)}>
       <div
         id="container"
-        onClick={() => this.handleExteriorFocus()}
-        onFocus={() => this.handleExteriorFocus()}
+        onClick={() => void this.handleExteriorFocus()}
+        onFocus={() => void this.handleExteriorFocus()}
         class={{ focused: this.containerFocused }}
       >
         <span id="init-icon">
@@ -106,7 +106,7 @@ export class NewTaskInput {
         <div id="button-container" style={{ display: this.taskVal ? 'flex' : 'none' }}>
           <input
             type="date"
-            onClick={e => e.stopPropagation()}
+            onClick={e => void e.stopPropagation()}
             class="task-input-button"
             data-tooltip="Select Due date"
             data-tippy-offset="[0, 20]"

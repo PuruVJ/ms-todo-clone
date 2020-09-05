@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
+import { ITask } from "./interfaces/task.interface";
 export namespace Components {
     interface AppRoot {
     }
@@ -25,7 +26,13 @@ export namespace Components {
     }
     interface NewTaskInput {
     }
+    interface TaskItem {
+        "focusContainer": () => Promise<void>;
+        "tabIndex": number;
+        "task": ITask;
+    }
     interface TasksList {
+        "taskList": ITask[];
     }
     interface ThemeSelector {
     }
@@ -73,6 +80,12 @@ declare global {
         prototype: HTMLNewTaskInputElement;
         new (): HTMLNewTaskInputElement;
     };
+    interface HTMLTaskItemElement extends Components.TaskItem, HTMLStencilElement {
+    }
+    var HTMLTaskItemElement: {
+        prototype: HTMLTaskItemElement;
+        new (): HTMLTaskItemElement;
+    };
     interface HTMLTasksListElement extends Components.TasksList, HTMLStencilElement {
     }
     var HTMLTasksListElement: {
@@ -93,6 +106,7 @@ declare global {
         "list-view": HTMLListViewElement;
         "list-view-header": HTMLListViewHeaderElement;
         "new-task-input": HTMLNewTaskInputElement;
+        "task-item": HTMLTaskItemElement;
         "tasks-list": HTMLTasksListElement;
         "theme-selector": HTMLThemeSelectorElement;
     }
@@ -116,7 +130,12 @@ declare namespace LocalJSX {
     }
     interface NewTaskInput {
     }
+    interface TaskItem {
+        "tabIndex"?: number;
+        "task"?: ITask;
+    }
     interface TasksList {
+        "taskList"?: ITask[];
     }
     interface ThemeSelector {
     }
@@ -128,6 +147,7 @@ declare namespace LocalJSX {
         "list-view": ListView;
         "list-view-header": ListViewHeader;
         "new-task-input": NewTaskInput;
+        "task-item": TaskItem;
         "tasks-list": TasksList;
         "theme-selector": ThemeSelector;
     }
@@ -143,6 +163,7 @@ declare module "@stencil/core" {
             "list-view": LocalJSX.ListView & JSXBase.HTMLAttributes<HTMLListViewElement>;
             "list-view-header": LocalJSX.ListViewHeader & JSXBase.HTMLAttributes<HTMLListViewHeaderElement>;
             "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
+            "task-item": LocalJSX.TaskItem & JSXBase.HTMLAttributes<HTMLTaskItemElement>;
             "tasks-list": LocalJSX.TasksList & JSXBase.HTMLAttributes<HTMLTasksListElement>;
             "theme-selector": LocalJSX.ThemeSelector & JSXBase.HTMLAttributes<HTMLThemeSelectorElement>;
         }

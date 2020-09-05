@@ -77,7 +77,6 @@ onChange('lists', async lists => {
 
   // Change the currentList too
   state.currentList = {...lists.find(({ id }) => state.currentList?.id === id)};
-  console.log(state.currentList);
 
   // Re-write the new changes to indexeddb
   await set('index', {

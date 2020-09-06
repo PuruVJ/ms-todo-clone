@@ -1,3 +1,31 @@
 :host {
   display: block;
 }
+
+.divider {
+  background-color: rgba(var(--app-color-dark-rgb), 0.9);
+  backdrop-filter: blur(10px);
+
+  color: var(--app-color-light);
+  fill: var(--app-color-light);
+  font-family: 'Fira Code', monospace;
+  font-size: 1.4rem;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 0.3rem 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &.first {
+    margin-top: 1rem;
+  }
+}

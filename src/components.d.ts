@@ -22,7 +22,6 @@ export namespace Components {
         "match": MatchResults;
     }
     interface ListViewHeader {
-        "match": MatchResults;
     }
     interface NewTaskInput {
     }
@@ -126,7 +125,6 @@ declare namespace LocalJSX {
         "match"?: MatchResults;
     }
     interface ListViewHeader {
-        "match"?: MatchResults;
     }
     interface NewTaskInput {
     }

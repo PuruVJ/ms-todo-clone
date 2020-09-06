@@ -27,6 +27,7 @@ export class AppRoot implements ComponentInterface {
       content: reference => reference.getAttribute('data-tooltip'),
       theme: 'material',
       arrow: false,
+      allowHTML: true
     });
   }
 

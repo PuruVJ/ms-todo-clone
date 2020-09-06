@@ -1,6 +1,5 @@
 import { mdiDotsVertical } from '@mdi/js';
-import { Component, h, Prop } from '@stencil/core';
-import { injectHistory, MatchResults } from '@stencil/router';
+import { Component, h } from '@stencil/core';
 import tippy, { sticky } from 'tippy.js';
 import { AppIcon } from '../../functional-comps/app-icon';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
@@ -11,8 +10,6 @@ import { listStore, onListsStoreChange } from '../../stores/lists.store';
   scoped: true,
 })
 export class ListViewHeader {
-  @Prop() match: MatchResults;
-
   inputEl: HTMLInputElement;
 
   optionsButton: HTMLButtonElement;
@@ -58,17 +55,15 @@ export class ListViewHeader {
             this.renameList(e);
           }}
           ref={el => (this.inputEl = el)}
-          style={{ color: listStore.currentList?.theme.color }}
+          style={{ color: listStore.currentList?.theme?.color }}
           value={listStore.currentList?.title}
         />
       </div>
       <div id="options-area">
         <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
-          <AppIcon fill={listStore.currentList?.theme.color} size={30} path={mdiDotsVertical} />
+          <AppIcon fill={listStore.currentList?.theme?.color} size={30} path={mdiDotsVertical} />
         </button>
       </div>
     </div>
   );
 }
-
-injectHistory(ListViewHeader);

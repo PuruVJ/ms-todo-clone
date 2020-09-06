@@ -30,4 +30,4 @@ onChange('tasks', async tasks => {
   }
 });
 
-export { state as taskStore };
+export { state as taskStore, onChange as onTaskStoreChange };

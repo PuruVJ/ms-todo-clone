@@ -1,4 +1,5 @@
 import { Component, Element, forceUpdate, h, Prop, State, Watch } from '@stencil/core';
+import { waitFor } from '../../helpers/utils';
 import { ITask } from '../../interfaces/task.interface';
 import { onTaskStoreChange } from '../../stores/tasks.store';
 import { Divider } from './divider';
@@ -13,8 +14,10 @@ export class TasksList {
 
   @Prop() taskList: ITask[] = [];
 
-  @Watch('taskList') onTaskListChange() {
-    this.selectedIndex = 0;
+  @Watch('taskList') async onTaskListChange() {
+    // this.selectedIndex = 0;
+    await waitFor(50);
+    
     this.taskItemEls = [...this.rootEl.querySelectorAll('task-item')];
 
     this.getSortedList();

@@ -9,7 +9,7 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: {
-        globPatterns: ['**/*.{png|jpg|jpeg|svg|js|css|html}'],
+        swSrc: 'src/sw.js',
       },
       baseUrl: 'https://ms-todo.puruvj.dev',
     },

@@ -11,7 +11,7 @@
 .container {
   background-color: rgba(var(--app-color-dark-rgb), 0.7);
   backdrop-filter: blur(40px);
-  
+
   color: var(--app-color-light);
   fill: var(--app-color-light);
 
@@ -27,6 +27,22 @@
 
 .info-area {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 80%;
+
+  .other-info {
+    color: rgba(var(--app-color-light-rgb), 0.6);
+    fill: rgba(var(--app-color-light-rgb), 0.6);
+    font-size: 0.7rem;
+
+    .centered {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 button {
@@ -40,7 +56,7 @@ button {
 
   height: 3rem;
   width: 3rem;
-  
+
   padding: 0.5rem;
   border-radius: 50%;
 }

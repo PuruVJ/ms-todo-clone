@@ -17,14 +17,12 @@ export class TasksList {
   @Watch('taskList') async onTaskListChange() {
     // this.selectedIndex = 0;
     await waitFor(50);
-    
+
     this.taskItemEls = [...this.rootEl.querySelectorAll('task-item')];
 
     this.getSortedList();
 
     forceUpdate(this);
-
-    console.log(this.taskItemEls);
   }
 
   @State() selectedIndex: number = 0;

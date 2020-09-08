@@ -1,6 +1,6 @@
-$base-size: 1rem;
+@base-size: 1rem;
 
-@import './theme.scss';
+@import './theme.less';
 @import '~tippy.js/dist/tippy.css';
 
 html,
@@ -78,11 +78,11 @@ h2 {
 }
 
 h1 {
-  font-size: $base-size * 2.618;
+  font-size: @base-size * 2.618;
 }
 
 h2 {
-  font-size: $base-size * 1.618;
+  font-size: @base-size * 1.618;
 }
 
 hr {

@@ -5,7 +5,7 @@ import { injectHistory, RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-sidenav',
-  styleUrl: 'app-sidenav.scss',
+  styleUrl: 'app-sidenav.less',
   scoped: true,
 })
 export class AppSidenav {

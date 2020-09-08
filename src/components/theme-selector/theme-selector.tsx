@@ -6,7 +6,7 @@ import { themes } from '../../themes';
 
 @Component({
   tag: 'theme-selector',
-  styleUrl: 'theme-selector.scss',
+  styleUrl: 'theme-selector.less',
   scoped: true,
 })
 export class ThemeSelector {

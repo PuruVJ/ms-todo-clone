@@ -11,7 +11,7 @@ import { taskStore } from '../../stores/tasks.store';
 
 @Component({
   tag: 'new-task-input',
-  styleUrl: 'new-task-input.scss',
+  styleUrl: 'new-task-input.less',
   scoped: true,
 })
 export class NewTaskInput {

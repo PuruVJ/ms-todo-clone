@@ -14,7 +14,7 @@ import { onTaskStoreChange, taskStore } from '../../stores/tasks.store';
 
 @Component({
   tag: 'task-item',
-  styleUrl: 'task-item.scss',
+  styleUrl: 'task-item.less',
   scoped: true,
 })
 export class TaskItem {

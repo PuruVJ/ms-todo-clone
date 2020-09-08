@@ -9,7 +9,7 @@ import { taskStore } from '../../stores/tasks.store';
 
 @Component({
   tag: 'list-view',
-  styleUrl: 'list-view.scss',
+  styleUrl: 'list-view.less',
   scoped: true,
 })
 export class ListView implements ComponentInterface {

@@ -1,8 +1,8 @@
 import { Config } from '@stencil/core';
-import { sass } from '@stencil/sass';
+import { less } from '@stencil/less';
 
 export const config: Config = {
-  globalStyle: 'src/global/app.scss',
+  globalStyle: 'src/global/app.less',
   globalScript: 'src/global/app.ts',
   taskQueue: 'async',
   outputTargets: [
@@ -14,9 +14,5 @@ export const config: Config = {
       baseUrl: 'https://ms-todo.puruvj.dev',
     },
   ],
-  plugins: [
-    sass({
-      includePaths: ['node_modules'],
-    }),
-  ],
+  plugins: [less({})],
 };

@@ -6,7 +6,7 @@ import { Divider } from './divider';
 
 @Component({
   tag: 'tasks-list',
-  styleUrl: 'tasks-list.scss',
+  styleUrl: 'tasks-list.less',
   scoped: true,
 })
 export class TasksList {
@@ -15,10 +15,9 @@ export class TasksList {
   @Prop() taskList: ITask[] = [];
 
   @Watch('taskList') async onTaskListChange() {
-    // this.selectedIndex = 0;
-    await waitFor(50);
+    this.selectedIndex = +!!this.selectedIndex;
 
-    this.taskItemEls = [...this.rootEl.querySelectorAll('task-item')];
+    await waitFor(50);
 
     this.getSortedList();
 
@@ -64,26 +63,29 @@ export class TasksList {
     });
   }
 
-  render = () => (
-    <div class="container">
-      {this.sortedList.map((task, i, arr) => [
-        task.completed && !arr[i - 1]?.completed && (
-          <Divider
-            first={i === 0 && arr[1].completed}
-            onClick={() => (this.completedCollapsed = !this.completedCollapsed)}
-            isOpen={!this.completedCollapsed}
-          />
-        ),
-        <task-item
-          style={{ display: task.completed && this.completedCollapsed ? 'none' : 'block' }}
-          data-id={i}
-          onKeyDown={e => this.handleKeyBoard(e)}
-          onClick={() => (this.selectedIndex = i)}
-          ref={el => this.taskItemEls.push(el)}
-          focusIndex={this.selectedIndex === i ? 0 : -1}
-          task={task}
-        />,
-      ])}
-    </div>
-  );
+  render = () => {
+    this.taskItemEls = [];
+    return (
+      <div class="container">
+        {this.sortedList.map((task, i, arr) => [
+          task.completed && !arr[i - 1]?.completed && (
+            <Divider
+              first={i === 0 && arr[1].completed}
+              onClick={() => (this.completedCollapsed = !this.completedCollapsed)}
+              isOpen={!this.completedCollapsed}
+            />
+          ),
+          <task-item
+            style={{ display: task.completed && this.completedCollapsed ? 'none' : 'block' }}
+            data-id={i}
+            onKeyDown={e => this.handleKeyBoard(e)}
+            onClick={() => (this.selectedIndex = i)}
+            ref={el => this.taskItemEls.push(el)}
+            focusIndex={this.selectedIndex === i ? 0 : -1}
+            task={task}
+          />,
+        ])}
+      </div>
+    );
+  };
 }

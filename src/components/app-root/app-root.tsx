@@ -13,7 +13,7 @@ import { taskStore } from '../../stores/tasks.store';
  */
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.scss',
+  styleUrl: 'app-root.less',
   scoped: true,
 })
 export class AppRoot implements ComponentInterface {

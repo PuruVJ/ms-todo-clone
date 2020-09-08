@@ -6,7 +6,7 @@ import { listStore, onListsStoreChange } from '../../stores/lists.store';
 
 @Component({
   tag: 'list-view-header',
-  styleUrl: 'list-view-header.scss',
+  styleUrl: 'list-view-header.less',
   scoped: true,
 })
 export class ListViewHeader {

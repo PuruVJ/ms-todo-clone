@@ -68,15 +68,15 @@ export class TasksList {
     return (
       <div class="container">
         {this.sortedList.map((task, i, arr) => [
-          task.completed && !arr[i - 1]?.completed && (
+          task?.completed && !arr[i - 1]?.completed && (
             <Divider
-              first={i === 0 && arr[1].completed}
+              first={(i === 0 && arr[1]?.completed) || (arr.length === 1 && task.completed)}
               onClick={() => (this.completedCollapsed = !this.completedCollapsed)}
               isOpen={!this.completedCollapsed}
             />
           ),
           <task-item
-            style={{ display: task.completed && this.completedCollapsed ? 'none' : 'block' }}
+            style={{ display: task?.completed && this.completedCollapsed ? 'none' : 'block' }}
             data-id={i}
             onKeyDown={e => this.handleKeyBoard(e)}
             onClick={() => (this.selectedIndex = i)}

@@ -6,13 +6,10 @@ import { Component, h } from '@stencil/core';
   scoped: true,
 })
 export class ListOptions {
-
-  render() {
-    return (
-      <div id="container">
-        <theme-selector />
-        <hr />
-      </div>
-    );
-  }
+  render = () => (
+    <div id="container">
+      <theme-selector />
+      <hr />
+    </div>
+  );
 }

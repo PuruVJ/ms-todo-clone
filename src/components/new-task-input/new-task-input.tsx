@@ -68,7 +68,7 @@ export class NewTaskInput {
 
     // Empty up stuff
     this.taskVal = this.taskInputEl.value = '';
-    this.dueDateInput.valueAsDate = new Date()
+    this.dueDateInput.value = format(new Date(), 'yyyy-MM-dd');
   }
 
   handleExteriorFocus() {
@@ -76,7 +76,7 @@ export class NewTaskInput {
   }
 
   componentDidLoad() {
-    this.dueDateInput.valueAsDate = new Date();
+    this.dueDateInput.value = format(new Date(), 'yyyy-MM-dd');
     // this.dueDateInput.min = format(new Date(), 'yyyy-MM-dd');
   }
 

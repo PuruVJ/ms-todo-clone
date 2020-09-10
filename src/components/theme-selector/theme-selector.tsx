@@ -33,13 +33,6 @@ export class ThemeSelector {
     }
   }
 
-  componentDidLoad() {
-    // onRouteMatchChange('match', newMatch => {
-    //   const { id } = newMatch.params;
-    //   this.list = listStore.lists.find(({ id: lID }) => id === lID);
-    // });
-  }
-
   processImage(image: string) {
     if (!image.startsWith('url(')) return image;
 

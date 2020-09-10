@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+.container {
+  background-color: transparent;
+
+  @color: rgba(var(--app-color-light-rgb), 0.85);
+  color: @color;
+  fill: @color;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.3rem;
+
+  cursor: pointer;
+
+  width: 100%;
+  height: 3rem;
+
+  border: none;
+
+  margin-bottom: 0.1rem;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(var(--app-color-light-rgb), 0.1) !important;
+  }
+
+  .button-content {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    padding: 0 1rem
+  }
+}
+
+input {
+  height: 100%;
+  width: 100%;
+
+  border: none;
+
+  padding: 0 1rem;
+  box-sizing: border-box;
+
+  color: var(--app-color-light);
+  font-size: 1.3rem;
+  font-family: 'Fira Code', monospace;
+
+  background-color: rgba(var(--app-color-light-rgb), 0.15);
+
+  &:focus {
+    box-shadow: none;
+  }
+}

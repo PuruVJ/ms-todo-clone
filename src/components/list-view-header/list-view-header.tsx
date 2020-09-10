@@ -54,6 +54,8 @@ export class ListViewHeader {
             this.inputEl.style.width = this.inputEl.value.length * 26 + 'px';
             this.renameList(e);
           }}
+          id="list-name"
+          autoComplete="off"
           ref={el => (this.inputEl = el)}
           style={{ color: listStore.currentList?.theme?.color }}
           value={listStore.currentList?.title}

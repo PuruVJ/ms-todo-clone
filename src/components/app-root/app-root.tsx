@@ -1,5 +1,5 @@
 import { Component, ComponentInterface, h } from '@stencil/core';
-import { isPast } from 'date-fns';
+import { endOfDay, isAfter, isPast } from 'date-fns';
 import tippy from 'tippy.js';
 import { get, set } from '../../idb.worker';
 import type { IIndex } from '../../interfaces/index.interface';
@@ -27,7 +27,7 @@ export class AppRoot implements ComponentInterface {
       content: reference => reference.getAttribute('data-tooltip'),
       theme: 'material',
       arrow: false,
-      allowHTML: true
+      allowHTML: true,
     });
   }
 
@@ -62,17 +62,25 @@ async function ensureListsPresence() {
 
   for (let task of tasks) {
     const dueDate = task.dateDue;
+    const taskLive = taskStore.tasks.find(({ id }) => id === task.id);
 
     // Compare
     if (!isPast(dueDate) && !task.listIDs.includes('my-day')) {
-      taskStore.tasks.find(({ id }) => id === task.id).listIDs.push('my-day');
+      taskLive.listIDs.push('my-day');
     }
 
     if (isPast(dueDate) && task.listIDs.includes('my-day')) {
       // Remove `my-day`
-      taskStore.tasks.find(({ id }) => id === task.id).listIDs = task.listIDs.filter(
-        lID => lID !== 'my-day',
-      );
+      taskLive.listIDs = task.listIDs.filter(lID => lID !== 'my-day');
+    }
+
+    // Check for planned tasks
+    if (isAfter(dueDate, endOfDay(new Date())) && !task.listIDs.includes('planned')) {
+      taskLive.listIDs.push('planned');
+    }
+
+    if (!isAfter(dueDate, endOfDay(new Date())) && task.listIDs.includes('planned')) {
+      taskLive.listIDs = task.listIDs.filter(lID => lID !== 'planned');
     }
   }
 

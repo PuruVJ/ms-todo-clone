@@ -1,7 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
-import { listStore } from '../../stores/lists.store';
-import { AppIcon } from '../../functional-comps/app-icon';
 import { injectHistory, RouterHistory } from '@stencil/router';
+import { AppIcon } from '../../functional-comps/app-icon';
+import { listStore } from '../../stores/lists.store';
 
 @Component({
   tag: 'app-sidenav',
@@ -16,11 +16,10 @@ export class AppSidenav {
   listsNavItems: HTMLLIElement[] = [];
 
   sortedLists() {
-    const presetLists = listStore.lists.filter(({ type }) => type === 'preset');
-    const customLists = listStore.lists.filter(({ type }) => type === 'custom');
+    const listsType = (typeList: 'preset' | 'custom') =>
+      listStore.lists.filter(({ type }) => type === typeList);
 
-    const finalLists = [...presetLists, ...customLists];
-    return finalLists;
+    return [...listsType('preset'), ...listsType('custom')];
   }
 
   handleKeyboard(e: KeyboardEvent) {
@@ -69,6 +68,8 @@ export class AppSidenav {
           </li>,
         ])}
       </ul>
+      <span id="spacer" />
+      <new-list-button />
     </aside>
   );
 }

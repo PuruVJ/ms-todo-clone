@@ -23,6 +23,9 @@ export namespace Components {
     }
     interface ListViewHeader {
     }
+    interface NewListButton {
+        "history": RouterHistory;
+    }
     interface NewTaskInput {
     }
     interface TaskItem {
@@ -73,6 +76,12 @@ declare global {
         prototype: HTMLListViewHeaderElement;
         new (): HTMLListViewHeaderElement;
     };
+    interface HTMLNewListButtonElement extends Components.NewListButton, HTMLStencilElement {
+    }
+    var HTMLNewListButtonElement: {
+        prototype: HTMLNewListButtonElement;
+        new (): HTMLNewListButtonElement;
+    };
     interface HTMLNewTaskInputElement extends Components.NewTaskInput, HTMLStencilElement {
     }
     var HTMLNewTaskInputElement: {
@@ -104,6 +113,7 @@ declare global {
         "list-options": HTMLListOptionsElement;
         "list-view": HTMLListViewElement;
         "list-view-header": HTMLListViewHeaderElement;
+        "new-list-button": HTMLNewListButtonElement;
         "new-task-input": HTMLNewTaskInputElement;
         "task-item": HTMLTaskItemElement;
         "tasks-list": HTMLTasksListElement;
@@ -126,6 +136,9 @@ declare namespace LocalJSX {
     }
     interface ListViewHeader {
     }
+    interface NewListButton {
+        "history"?: RouterHistory;
+    }
     interface NewTaskInput {
     }
     interface TaskItem {
@@ -144,6 +157,7 @@ declare namespace LocalJSX {
         "list-options": ListOptions;
         "list-view": ListView;
         "list-view-header": ListViewHeader;
+        "new-list-button": NewListButton;
         "new-task-input": NewTaskInput;
         "task-item": TaskItem;
         "tasks-list": TasksList;
@@ -160,6 +174,7 @@ declare module "@stencil/core" {
             "list-options": LocalJSX.ListOptions & JSXBase.HTMLAttributes<HTMLListOptionsElement>;
             "list-view": LocalJSX.ListView & JSXBase.HTMLAttributes<HTMLListViewElement>;
             "list-view-header": LocalJSX.ListViewHeader & JSXBase.HTMLAttributes<HTMLListViewHeaderElement>;
+            "new-list-button": LocalJSX.NewListButton & JSXBase.HTMLAttributes<HTMLNewListButtonElement>;
             "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
             "task-item": LocalJSX.TaskItem & JSXBase.HTMLAttributes<HTMLTaskItemElement>;
             "tasks-list": LocalJSX.TasksList & JSXBase.HTMLAttributes<HTMLTasksListElement>;

@@ -23,6 +23,9 @@ export class ListView implements ComponentInterface {
 
   @Watch('match') async onMatchChange() {
     await this.componentWillLoad();
+
+    // Check if the list name input should be focused
+    console.log(this.history.location.state);
   }
 
   handleStates() {
@@ -34,6 +37,9 @@ export class ListView implements ComponentInterface {
 
     // Get all the tasks associated to this list
     this.taskList = getTasks(this.listData.id);
+
+    // Change the scrollbar color
+    document.documentElement.style.setProperty('--app-color-scrollbar', this.listData.theme.color);
   }
 
   componentWillLoad = async () => {

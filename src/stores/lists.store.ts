@@ -21,7 +21,7 @@ const defaultLists: IList[] = [
     title: 'My Day',
     type: 'preset',
     theme: {
-      image: 'url(./assets/wallpapers/1.jpg)',
+      image: 'url(./assets/wallpapers/6.jpg)',
       color: '#FFEE58',
     },
   },

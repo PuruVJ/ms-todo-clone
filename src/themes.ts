@@ -46,11 +46,39 @@ export const themes: ITheme[] = [
     color: '#838ab9',
   },
   {
+    image: 'linear-gradient(to right, #ed213a, #93291e)',
+    color: '#f26475'
+  },
+  {
     image: 'url(./assets/wallpapers/1.jpg)',
     color: 'rgba(244, 245, 248, 1)',
   },
   {
     image: 'url(./assets/wallpapers/2.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/3.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/4.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/5.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/6.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/7.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/8.jpg)',
     color: 'rgba(244, 245, 248, 1)',
   },
 ];

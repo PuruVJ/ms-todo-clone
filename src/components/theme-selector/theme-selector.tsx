@@ -18,8 +18,8 @@ export class ThemeSelector {
     const responses = {
       ArrowRight: +1,
       ArrowLeft: -1,
-      ArrowDown: +4,
-      ArrowUp: -4,
+      ArrowDown: +5,
+      ArrowUp: -5,
     };
 
     if (e.key in responses) {

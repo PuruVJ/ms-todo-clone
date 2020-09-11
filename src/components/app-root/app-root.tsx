@@ -7,6 +7,8 @@ import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
 import { taskStore } from '../../stores/tasks.store';
+import Helmet from '@stencil/helmet';
+import { themes } from '../../themes';
 
 /**
  * Mostly arbitrary work will happen here
@@ -46,6 +48,13 @@ export class AppRoot implements ComponentInterface {
         </div>
       </main>
       <app-task-view-pane />
+      <Helmet>
+        {themes
+          .filter(({ image }) => image.startsWith('url('))
+          .map(({ image }) => (
+            <link rel="prefetch" href={image.replace('url(', '').replace(')', '')} as="image" />
+          ))}
+      </Helmet>
     </div>
   );
 }

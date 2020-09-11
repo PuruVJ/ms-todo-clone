@@ -50,6 +50,18 @@ export const themes: ITheme[] = [
     color: '#f26475'
   },
   {
+    image: 'linear-gradient(to right, #43c6ac, #f8ffae)',
+    color: '#F8FFAE'
+  },
+  {
+    image: 'linear-gradient(to right, #a8ff78, #78ffd6)',
+    color: '#aeffe6'
+  },
+  {
+    image: 'linear-gradient(to right, #c31432, #240b36)',
+    color: '#a79daf'
+  },
+  {
     image: 'url(./assets/wallpapers/1.jpg)',
     color: 'rgba(244, 245, 248, 1)',
   },
@@ -79,6 +91,28 @@ export const themes: ITheme[] = [
   },
   {
     image: 'url(./assets/wallpapers/8.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },
+  {
+    image: 'url(./assets/wallpapers/9.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/10.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/11.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/12.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/13.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/14.jpg)',
+    color: 'rgba(244, 245, 248, 1)',
+  },{
+    image: 'url(./assets/wallpapers/15.jpg)',
     color: 'rgba(244, 245, 248, 1)',
   },
 ];

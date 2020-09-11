@@ -14,6 +14,7 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface AppTaskViewPane {
+        "task": ITask;
     }
     interface ListOptions {
     }
@@ -127,6 +128,7 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
     }
     interface AppTaskViewPane {
+        "task"?: ITask;
     }
     interface ListOptions {
     }

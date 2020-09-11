@@ -8,7 +8,7 @@ import {
 } from '@mdi/js';
 import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 import { endOfDay, format, isAfter } from 'date-fns';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 import { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
 import { onTaskStoreChange, taskStore } from '../../stores/tasks.store';

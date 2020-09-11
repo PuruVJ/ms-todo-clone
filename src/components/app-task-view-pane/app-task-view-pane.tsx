@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { ITask } from '../../interfaces/task.interface';
 
 @Component({
   tag: 'app-task-view-pane',
@@ -6,11 +7,13 @@ import { Component, Host, h } from '@stencil/core';
   scoped: true,
 })
 export class AppTaskViewPane {
+  @Prop() task: ITask;
+
   render() {
     return (
-      <Host>
+      <div>
         <slot></slot>
-      </Host>
+      </div>
     );
   }
 }

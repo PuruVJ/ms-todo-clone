@@ -1,6 +1,6 @@
 import { mdiChevronDown, mdiChevronRight } from '@mdi/js';
 import { FunctionalComponent, h } from '@stencil/core';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 
 interface IDivider {
   onClick: (e: Event) => any;

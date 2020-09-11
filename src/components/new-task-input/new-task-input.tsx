@@ -1,8 +1,8 @@
 import { mdiCheckboxBlankCircleOutline, mdiPlus } from '@mdi/js';
 import { Component, h, State } from '@stencil/core';
-import { endOfDay, format, isPast, startOfDay } from 'date-fns';
+import { endOfDay, format, isAfter, isPast, startOfDay } from 'date-fns';
 import { nanoid } from 'nanoid';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 import { get } from '../../idb.worker';
 import { IIndex } from '../../interfaces/index.interface';
 import { ITask } from '../../interfaces/task.interface';
@@ -56,6 +56,7 @@ export class NewTaskInput {
           'my-day',
           listStore.currentList.type === 'preset' ? 'tasks' : listStore.currentList.id,
           listStore.currentList.id,
+          ...(isAfter(dateDue, endOfDay(new Date())) ? ['planned'] : []),
         ]),
       ],
       title: this.taskVal,

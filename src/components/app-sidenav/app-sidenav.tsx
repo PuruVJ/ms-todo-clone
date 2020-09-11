@@ -1,6 +1,6 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 import { listStore } from '../../stores/lists.store';
 
 @Component({
@@ -44,34 +44,38 @@ export class AppSidenav {
     }
   }
 
-  render = () => (
-    <aside>
-      <h2>Todo App</h2>
-      <ul class="lists">
-        {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
-          <li
-            aria-label={`${title} list`}
-            onKeyDown={e => this.handleKeyboard(e)}
-            onClick={() => {
-              this.selectedListIndex = i;
-              this.history.push(`/${id}`);
-            }}
-            tabIndex={i === this.selectedListIndex ? 0 : -1}
-            id={`${type}-lists`}
-            ref={el => this.listsNavItems.push(el)}
-            class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
-          >
-            <span class="icon">
-              <AppIcon fill={theme.color} path={icon} />
-            </span>
-            <span class="title">{title}</span>
-          </li>,
-        ])}
-      </ul>
-      <span id="spacer" />
-      <new-list-button />
-    </aside>
-  );
+  render = () => {
+    this.listsNavItems = [];
+    
+    return (
+      <aside>
+        <h2>Todo App</h2>
+        <ul class="lists">
+          {this.sortedLists().map(({ icon, title, type, theme, id }, i, arr) => [
+            <li
+              aria-label={`${title} list`}
+              onKeyDown={e => this.handleKeyboard(e)}
+              onClick={() => {
+                this.selectedListIndex = i;
+                this.history.push(`/${id}`);
+              }}
+              tabIndex={i === this.selectedListIndex ? 0 : -1}
+              id={`${type}-lists`}
+              ref={el => this.listsNavItems.push(el)}
+              class={{ bordered: arr[i + 1] && type !== arr[i + 1]?.type }}
+            >
+              <span class="icon">
+                <AppIcon fill={theme.color} path={icon} />
+              </span>
+              <span class="title">{title}</span>
+            </li>,
+          ])}
+        </ul>
+        <span id="spacer" />
+        <new-list-button />
+      </aside>
+    );
+  };
 }
 
 injectHistory(AppSidenav);

@@ -1,7 +1,7 @@
 import { mdiDotsVertical } from '@mdi/js';
 import { Component, h } from '@stencil/core';
 import tippy, { sticky } from 'tippy.js';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 import { listStore, onListsStoreChange } from '../../stores/lists.store';
 
 @Component({

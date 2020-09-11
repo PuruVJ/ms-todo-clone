@@ -2,7 +2,7 @@ import { mdiMenu, mdiPlus } from '@mdi/js';
 import { Component, h, Prop, State } from '@stencil/core';
 import { injectHistory, RouterHistory } from '@stencil/router';
 import { nanoid } from 'nanoid';
-import { AppIcon } from '../../functional-comps/app-icon';
+import { AppIcon } from '../../global/app-icon';
 import { randInt, waitFor } from '../../helpers/utils';
 import { IList } from '../../interfaces/list.interface';
 import { listStore } from '../../stores/lists.store';

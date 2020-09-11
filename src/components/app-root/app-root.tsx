@@ -7,7 +7,6 @@ import type { IList } from '../../interfaces/list.interface';
 import type { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
 import { taskStore } from '../../stores/tasks.store';
-import Helmet from '@stencil/helmet';
 import { themes } from '../../themes';
 
 /**
@@ -31,6 +30,8 @@ export class AppRoot implements ComponentInterface {
       arrow: false,
       allowHTML: true,
     });
+
+    setPrefetchTags();
   }
 
   render = () => (
@@ -48,13 +49,6 @@ export class AppRoot implements ComponentInterface {
         </div>
       </main>
       <app-task-view-pane />
-      <Helmet>
-        {themes
-          .filter(({ image }) => image.startsWith('url('))
-          .map(({ image }) => (
-            <link rel="prefetch" href={image.replace('url(', '').replace(')', '')} as="image" />
-          ))}
-      </Helmet>
     </div>
   );
 }
@@ -147,4 +141,17 @@ async function ensureLocalData() {
       taskStore.tasks.find(({ id }) => id === taskID),
     );
   }
+}
+
+function setPrefetchTags() {
+  themes
+    .filter(({ image }) => image.startsWith('url('))
+    .map(({ image }) => image.replace('url(', '').replace(')', ''))
+    .forEach(image => {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = image;
+
+      document.head.appendChild(link);
+    });
 }

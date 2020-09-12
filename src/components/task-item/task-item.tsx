@@ -4,11 +4,12 @@ import {
   mdiCheckboxMarkedCircle,
   mdiNoteOutline,
   mdiStar,
-  mdiStarOutline
+  mdiStarOutline,
 } from '@mdi/js';
 import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
 import { endOfDay, format, isAfter } from 'date-fns';
 import { AppIcon } from '../../global/app-icon';
+import { toggleTaskViewPane } from '../../helpers/task-view-pane-methods';
 import { ITask } from '../../interfaces/task.interface';
 import { listStore } from '../../stores/lists.store';
 import { onTaskStoreChange, taskStore } from '../../stores/tasks.store';
@@ -67,7 +68,7 @@ export class TaskItem {
   }
 
   render = () => {
-    const { completed, listIDs } = this.task || {};
+    const { completed, listIDs, id } = this.task || {};
     const isImportant = listIDs.includes('important');
     const otherInfo = getOtherInfo(this.task);
 
@@ -83,9 +84,13 @@ export class TaskItem {
           ref={el => (this.container = el)}
           tabIndex={this.focusIndex}
           class={{ container: true, completed }}
+          onClick={() => toggleTaskViewPane(id)}
         >
           <button
-            onClick={() => this.toggleCompleted(!completed)}
+            onClick={e => {
+              e.stopPropagation();
+              this.toggleCompleted(!completed);
+            }}
             data-tooltip={`Set as ${completed ? 'Incomplete' : 'Complete'}`}
             tabIndex={this.focusIndex}
             ref={(el: any) =>
@@ -103,7 +108,10 @@ export class TaskItem {
             data-tooltip={isImportant ? 'Remove Importance' : 'Mark as important'}
             id="important-button"
             tabIndex={this.focusIndex}
-            onClick={() => this.toggleImportance(!isImportant)}
+            onClick={e => {
+              e.stopPropagation();
+              this.toggleImportance(!isImportant);
+            }}
             ref={(el: any) =>
               el._tippy?.setContent(isImportant ? 'Remove Importance' : 'Mark as important')
             }

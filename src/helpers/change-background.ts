@@ -11,7 +11,7 @@ export const changeBackground = async (background: string) => {
   // Now set the background
   el.style.backgroundImage = background;
 
-  await waitFor(150);
+  await waitFor(200);
 
   // Show it up
   el.style.opacity = '1';

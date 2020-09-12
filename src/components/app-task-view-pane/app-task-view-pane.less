@@ -1,5 +1,37 @@
 :host {
   display: block;
 
-  position: absolute;
+  position: relative;
+
+  height: 100%;
+}
+
+.container {
+  background-color: rgba(var(--app-color-dark-rgb), 0.6);
+  backdrop-filter: blur(30px);
+
+  color: var(--app-color-light);
+
+  height: 100%;
+  width: 20rem;
+
+  margin-right: -20rem;
+
+  padding: 1rem;
+  box-sizing: border-box;
+
+  &.open {
+    margin-right: 0;
+  }
+}
+
+#task-heading {
+  width: 100%;
+
+  h2 {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+  }
 }

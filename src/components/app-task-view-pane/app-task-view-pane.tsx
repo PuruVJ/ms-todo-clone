@@ -1,5 +1,6 @@
-import { Component, h, Prop } from '@stencil/core';
-import { ITask } from '../../interfaces/task.interface';
+import { Component, h } from '@stencil/core';
+import { taskViewPaneStore } from '../../stores/task-view-pane.store';
+import { taskStore } from '../../stores/tasks.store';
 
 @Component({
   tag: 'app-task-view-pane',
@@ -7,12 +8,14 @@ import { ITask } from '../../interfaces/task.interface';
   scoped: true,
 })
 export class AppTaskViewPane {
-  @Prop() task: ITask;
-
   render() {
+    const { title } = taskStore.tasks.find(({ id }) => id === taskViewPaneStore.taskID) || {};
     return (
-      <div>
-        <slot></slot>
+      <div class={{ container: true, open: taskViewPaneStore.isOpen }}>
+        <section id="task-heading">
+          <h2>{title}</h2>
+        </section>
+        <section></section>
       </div>
     );
   }

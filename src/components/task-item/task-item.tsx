@@ -69,7 +69,7 @@ export class TaskItem {
 
   render = () => {
     const { completed, listIDs, id } = this.task || {};
-    const isImportant = listIDs.includes('important');
+    const isImportant = listIDs?.includes('important');
     const otherInfo = getOtherInfo(this.task);
 
     return (
@@ -94,7 +94,7 @@ export class TaskItem {
             data-tooltip={`Set as ${completed ? 'Incomplete' : 'Complete'}`}
             tabIndex={this.focusIndex}
             ref={(el: any) =>
-              el._tippy?.setContent(`Set as ${completed ? 'Incomplete' : 'Complete'}`)
+              el?._tippy?.setContent(`Set as ${completed ? 'Incomplete' : 'Complete'}`)
             }
             id="check-button"
           >
@@ -113,7 +113,7 @@ export class TaskItem {
               this.toggleImportance(!isImportant);
             }}
             ref={(el: any) =>
-              el._tippy?.setContent(isImportant ? 'Remove Importance' : 'Mark as important')
+              el?._tippy?.setContent(isImportant ? 'Remove Importance' : 'Mark as important')
             }
           >
             <AppIcon path={isImportant ? mdiStar : mdiStarOutline} />
@@ -125,9 +125,9 @@ export class TaskItem {
 }
 
 function getOtherInfo({ steps, dateDue, note, listIDs }: ITask = null) {
-  const completedSteps = steps.filter(({ completed }) => completed).length;
+  const completedSteps = steps?.filter(({ completed }) => completed).length;
   const belongingList = listStore.lists.find(
-    ({ id }) => id === listIDs.filter(id => id !== 'my-day')[0],
+    ({ id }) => id === listIDs?.filter(id => id !== 'my-day')[0],
   );
 
   return [

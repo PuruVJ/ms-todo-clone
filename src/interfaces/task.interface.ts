@@ -10,6 +10,6 @@ export interface ITask {
 }
 
 export interface IStep {
-  name: string;
+  title: string;
   completed: boolean;
 }

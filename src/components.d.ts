@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory } from "@stencil/router";
-import { ITask } from "./interfaces/task.interface";
+import { IStep, ITask } from "./interfaces/task.interface";
 export namespace Components {
     interface AppRoot {
     }
@@ -27,6 +27,9 @@ export namespace Components {
         "history": RouterHistory;
     }
     interface NewTaskInput {
+    }
+    interface StepEl {
+        "step": IStep;
     }
     interface TaskItem {
         "focusContainer": () => Promise<void>;
@@ -88,6 +91,12 @@ declare global {
         prototype: HTMLNewTaskInputElement;
         new (): HTMLNewTaskInputElement;
     };
+    interface HTMLStepElElement extends Components.StepEl, HTMLStencilElement {
+    }
+    var HTMLStepElElement: {
+        prototype: HTMLStepElElement;
+        new (): HTMLStepElElement;
+    };
     interface HTMLTaskItemElement extends Components.TaskItem, HTMLStencilElement {
     }
     var HTMLTaskItemElement: {
@@ -115,6 +124,7 @@ declare global {
         "list-view-header": HTMLListViewHeaderElement;
         "new-list-button": HTMLNewListButtonElement;
         "new-task-input": HTMLNewTaskInputElement;
+        "step-el": HTMLStepElElement;
         "task-item": HTMLTaskItemElement;
         "tasks-list": HTMLTasksListElement;
         "theme-selector": HTMLThemeSelectorElement;
@@ -141,6 +151,9 @@ declare namespace LocalJSX {
     }
     interface NewTaskInput {
     }
+    interface StepEl {
+        "step"?: IStep;
+    }
     interface TaskItem {
         "focusIndex"?: number;
         "task"?: ITask;
@@ -159,6 +172,7 @@ declare namespace LocalJSX {
         "list-view-header": ListViewHeader;
         "new-list-button": NewListButton;
         "new-task-input": NewTaskInput;
+        "step-el": StepEl;
         "task-item": TaskItem;
         "tasks-list": TasksList;
         "theme-selector": ThemeSelector;
@@ -176,6 +190,7 @@ declare module "@stencil/core" {
             "list-view-header": LocalJSX.ListViewHeader & JSXBase.HTMLAttributes<HTMLListViewHeaderElement>;
             "new-list-button": LocalJSX.NewListButton & JSXBase.HTMLAttributes<HTMLNewListButtonElement>;
             "new-task-input": LocalJSX.NewTaskInput & JSXBase.HTMLAttributes<HTMLNewTaskInputElement>;
+            "step-el": LocalJSX.StepEl & JSXBase.HTMLAttributes<HTMLStepElElement>;
             "task-item": LocalJSX.TaskItem & JSXBase.HTMLAttributes<HTMLTaskItemElement>;
             "tasks-list": LocalJSX.TasksList & JSXBase.HTMLAttributes<HTMLTasksListElement>;
             "theme-selector": LocalJSX.ThemeSelector & JSXBase.HTMLAttributes<HTMLThemeSelectorElement>;

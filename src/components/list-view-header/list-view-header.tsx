@@ -63,7 +63,7 @@ export class ListViewHeader {
       </div>
       <div id="options-area">
         <button ref={el => (this.optionsButton = el)} id="lvh-options-button">
-          <AppIcon fill={listStore.currentList?.theme?.color} size={30} path={mdiDotsVertical} />
+          <AppIcon size={30} path={mdiDotsVertical} />
         </button>
       </div>
     </div>

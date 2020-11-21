@@ -17,8 +17,9 @@
 
   border-radius: 0.5rem;
 
-  background-color: rgba(var(--app-color-dark-rgb), 0.7);
-  backdrop-filter: blur(15px);
+  background-color: rgba(var(--app-color-light-rgb), 0.6);
+  backdrop-filter: blur(40px);
+  box-shadow:rgba(0, 0, 0, 0.3) 2px 5px 19px 7px;
 
   padding: 0 1rem;
 
@@ -30,7 +31,7 @@
   // padding: 1rem;
 
   &.focused {
-    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-light-rgb), 0.9);
+    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-dark-rgb), 0.9);
   }
 }
 
@@ -42,7 +43,7 @@ input {
 
   background-color: transparent;
 
-  color: white;
+  color: var(--app-color-dark);
   font-size: 1.2rem;
   letter-spacing: 0.8px;
   line-height: 1.4;
@@ -52,12 +53,12 @@ input {
   }
 
   &::placeholder {
-    color: rgba(var(--app-color-light-rgb), 0.7);
+    color: rgba(var(--app-color-dark-rgb), 0.7);
   }
 }
 
 span#init-icon {
-  fill: rgba(var(--app-color-light-rgb), 0.7);
+  fill: rgba(var(--app-color-dark-rgb), 0.7);
 
   display: grid;
   place-items: center;
@@ -81,8 +82,8 @@ span#init-icon {
   border-radius: 0.5rem;
 
   background: transparent;
-  fill: var(--app-color-light);
-  color: var(--app-color-light);
+  fill: var(--app-color-dark);
+  color: var(--app-color-dark);
 
   height: 2.5rem;
 
@@ -92,7 +93,7 @@ span#init-icon {
 
   &:focus,
   &:hover {
-    background-color: rgba(var(--app-color-light-rgb), 0.1);
+    background-color: rgba(var(--app-color-dark-rgb), 0.1);
   }
 }
 

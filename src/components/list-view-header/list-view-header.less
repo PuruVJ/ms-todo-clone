@@ -8,7 +8,7 @@
 }
 
 #heading {
-  color: var(--app-color-light);
+  color: var(--app-color-dark);
 
   border-radius: 8px;
 
@@ -19,10 +19,10 @@
   width: max-content;
 
   backdrop-filter: blur(20px);
-  background-color: rgba(var(--app-color-dark-rgb), 0.4);
+  background-color: rgba(var(--app-color-light-rgb), 0.2);
 
   &:focus-within {
-    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-light-rgb), 0.9);
+    box-shadow: inset 0 0 0 2.3px rgba(var(--app-color-dark-rgb), 0.9);
   }
 
   input {
@@ -32,6 +32,7 @@
 
     border: none;
 
+    color: var(--app-color-dark) !important;
     font-size: 2.618rem;
     font-family: 'Fira Code', monospace;
     font-weight: 600;
@@ -56,7 +57,7 @@
 }
 
 #options-area button {
-  background-color: rgba(var(--app-color-dark-rgb), 0.4);
+  background-color: rgba(var(--app-color-light-rgb), 0.2);
   backdrop-filter: blur(20px);
 
   display: flex;

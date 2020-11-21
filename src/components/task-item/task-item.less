@@ -9,23 +9,19 @@
 }
 
 .container {
-  background-color: rgba(var(--app-color-dark-rgb), 0.7);
+  background-color: rgba(var(--app-color-light-rgb), 0.4);
   backdrop-filter: blur(40px);
-
-  --color: var(--app-color-light);
-
+  --color: var(--app-color-dark);
   color: var(--color);
   fill: var(--color);
-
   display: flex;
   align-items: center;
-
   border-radius: 8px;
-
   height: 3.3rem;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 4px 0px;
 
   &.completed {
-    --color: rgba(var(--app-color-light-rgb), 0.6);
+    --color: rgba(var(--app-color-dark-rgb), 0.6);
 
     .title {
       text-decoration: line-through;
@@ -44,8 +40,8 @@
   .other-info {
     display: inherit;
 
-    color: rgba(var(--app-color-light-rgb), 0.6);
-    fill: rgba(var(--app-color-light-rgb), 0.6);
+    color: rgba(var(--app-color-dark-rgb), 0.6);
+    fill: rgba(var(--app-color-dark-rgb), 0.6);
     font-size: 0.7rem;
 
     .centered {

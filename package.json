@@ -5,7 +5,7 @@
   "description": "Stencil App Starter",
   "scripts": {
     "build": "stencil build",
-    "start": "stencil build --dev --watch --serve --no-open"
+    "start": "stencil build --dev --watch --serve"
   },
   "devDependencies": {
     "@stencil/core": "^2.3.0",

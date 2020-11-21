@@ -55,6 +55,8 @@ export class ListView implements ComponentInterface {
 
     routeMatchStore.match = this.match;
 
+    document.title = `${this.listData.title} - MS Todo`;
+
     await changeListTheme(this.listData);
   };
 
